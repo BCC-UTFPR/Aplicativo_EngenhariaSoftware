@@ -7,6 +7,7 @@ package Visao.Janelas.Componentes.Paineis;
 
 import Visao.Janelas.Componentes.Paineis.JPanelBase;
 import Persistencia.DAO;
+import Visao.Janelas.Componentes.Campos.JLabelEdit;
 import Visao.Janelas.Componentes.FormConsultaPadrao;
 import Visao.Janelas.Componentes.JButtonBase;
 import java.awt.Color;
