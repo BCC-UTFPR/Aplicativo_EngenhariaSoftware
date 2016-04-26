@@ -23,7 +23,7 @@ public class FleetTracking {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws ParseException, Exception {
-        EntityManagerProvider.setEntityManagerFactory();
+        //EntityManagerProvider.setEntityManagerFactory();
         
         tela = new TelaPrincipal();
         tela.setVisible(true);

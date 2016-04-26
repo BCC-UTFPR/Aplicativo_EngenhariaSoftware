@@ -9,8 +9,6 @@ import Visao.Janelas.Componentes.Campos.JLabelEditCpf;
 import Visao.Janelas.Componentes.Campos.JLabelEditString;
 import Visao.Janelas.Componentes.Paineis.JPanelCadastro;
 import java.text.ParseException;
-import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
 
 /**
  *
@@ -30,17 +28,17 @@ public class painelFuncionario extends JPanelCadastro {
     
     public painelFuncionario() throws ParseException  {
         
-        nome = new JLabelEditString("Nome:", 5, 30, 400);
-        numeroRegistro = new JLabelEditString("Número de Registro:", 5, 70, 100);
-        numeroRG = new JLabelEditString("RG:", 160, 70, 100);
-        numeroCPF = new JLabelEditCpf("CPF:", 315, 70, 100);
+        nome = new JLabelEditString("Nome:", 5, 35, 400);
+        numeroRegistro = new JLabelEditString("Número de Registro:", 5, 75, 200);
+        numeroRG = new JLabelEditString("RG:", 215, 75, 200);
+        numeroCPF = new JLabelEditCpf("CPF:", 430, 75, 200);
         
         this.add(nome);
         this.add(numeroRegistro);
         this.add(numeroRG);
         this.add(numeroCPF);
         
-        setSize(500, 180);
+        setSize(500, 200);
         super.setClassEntity("CadFuncionario");
         super.setPesquisa(pesquisa);
     }  
