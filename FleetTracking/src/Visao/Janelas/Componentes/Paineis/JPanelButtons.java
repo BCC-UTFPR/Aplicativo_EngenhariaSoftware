@@ -49,13 +49,6 @@ public class JPanelButtons extends JPanelBase{
         this.btOpen   = new JButtonBase("Abrir");
         this.btClose  = new JButtonBase("Fechar");
 
-        btNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paineis/cadastro/imageicons/Icone Novo.png")));
-        btCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paineis/cadastro/imageicons/Icone Cancelar.png")));
-        btOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paineis/cadastro/imageicons/Icone Abrir.png")));
-        btDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paineis/cadastro/imageicons/Icone Deletar.png")));
-        btSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paineis/cadastro/imageicons/Icone Salvar.png")));
-        btClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paineis/cadastro/imageicons/Icone Fechar.png")));
-        
         this.add(btNew);
         this.add(btSave);
         this.add(btDelete);
