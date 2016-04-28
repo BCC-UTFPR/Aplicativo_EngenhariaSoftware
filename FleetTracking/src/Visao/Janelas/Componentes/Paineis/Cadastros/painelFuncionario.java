@@ -7,8 +7,11 @@ package Visao.Janelas.Componentes.Paineis.Cadastros;
 
 import Visao.Janelas.Componentes.Campos.JLabelEditCpf;
 import Visao.Janelas.Componentes.Campos.JLabelEditString;
+import Visao.Janelas.Componentes.Campos.JLabelEditTextArea;
 import Visao.Janelas.Componentes.Paineis.JPanelCadastro;
 import java.text.ParseException;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -20,9 +23,11 @@ public class painelFuncionario extends JPanelCadastro {
     private JLabelEditString numeroRegistro;
     private JLabelEditString numeroRG;
     private JLabelEditCpf numeroCPF;
-    //private JRadioButtonEdit categoriaCNH; criar a classe JRadioButtonEdit
-    //private JTextAreaEdit comentarios; criar a classe JTextAreaEdit
-
+    private JLabelEditString categoriaCNH;
+    private JLabelEditTextArea comentarios;
+    private JLabel labelTextArea;
+    private JScrollPane sc;
+    
     //private CadFuncionario dao;
     private String pesquisa = "nome";
     
@@ -32,13 +37,20 @@ public class painelFuncionario extends JPanelCadastro {
         numeroRegistro = new JLabelEditString("Número de Registro:", 5, 75, 200);
         numeroRG = new JLabelEditString("RG:", 215, 75, 200);
         numeroCPF = new JLabelEditCpf("CPF:", 430, 75, 200);
+        comentarios = new JLabelEditTextArea();
+        labelTextArea = new JLabel("Comentários:");
+        labelTextArea.setBounds(10, 105, 100, 50);
+        sc = new JScrollPane(comentarios);
+        sc.setBounds(10, 140, 400, 50);
         
         this.add(nome);
         this.add(numeroRegistro);
         this.add(numeroRG);
         this.add(numeroCPF);
+        this.add(labelTextArea);
+        this.add(sc);
         
-        setSize(500, 200);
+        setSize(500, 300);
         super.setClassEntity("CadFuncionario");
         super.setPesquisa(pesquisa);
     }  
@@ -74,12 +86,6 @@ public class painelFuncionario extends JPanelCadastro {
         
     }
 
-    @Override
-    public void setEditavel(boolean b) { }
-
-    @Override
-    public void limpar() { }
-
     public void setNome(String text) {
         this.nome.setText(text);
     }
@@ -96,5 +102,17 @@ public class painelFuncionario extends JPanelCadastro {
         this.numeroCPF.setText(text);
     }
     
+    @Override
+    public void setEditavel(boolean b) {
+        if (!b) {
+            this.comentarios.setEnabled(b);
+        } else {
+            this.comentarios.setEnabled(b);
+        }
+    }
     
+    @Override
+    public void limpar(){
+        comentarios.setText("");
+    }
 }
