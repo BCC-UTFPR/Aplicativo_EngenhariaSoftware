@@ -8,36 +8,44 @@ import Visao.Janelas.Componentes.Campos.JLabelEditPlaca;
 import Visao.Janelas.Componentes.Campos.JLabelEditRenavam;
 import Visao.Janelas.Componentes.Campos.JLabelEditString;
 import Visao.Janelas.Componentes.Paineis.JPanelCadastro;
+import Visao.Janelas.Componentes.Campos.JLabelEditCpf;
 import java.text.ParseException;
-
-
 /**
  *
  * @author jfilhogn
  */
-public class painelVeiculo extends JPanelCadastro {
+public class painelSaidaVeiculo extends JPanelCadastro {
     
     private JLabelEditString marca;
     private JLabelEditString modelo;
-    private JLabelEditRenavam numeroRenavam;
     private JLabelEditPlaca numeroPlaca;
+    private JLabelEditCpf cpfMotorista;
+    private JLabelEditString nomeMotorista;
+    
+    //TODO fiz no modo que pensei, temos que ver se o formato é dessa forma
+    private String dataSaida;
+    private String observacoes;
+    private String combustivelPresente;
     //private JRadioButtonEdit categoriaCNH; criar a classe JRadioButtonEdit
     //private JTextAreaEdit comentarios; criar a classe JTextAreaEdit
 
     //private CadVeiculo dao;
-    private String pesquisa = "renavam";
-
-     public painelVeiculo() throws ParseException  {
+    private String pesquisa = "motorista";
+    
+     public painelSaidaVeiculo() throws ParseException  {
         
         marca = new JLabelEditString("Marca:", 5, 35, 400);
         modelo = new JLabelEditString("Modelo:", 5, 75, 200);
-        numeroRenavam = new JLabelEditRenavam("Numero do Renavam:", 215, 75, 200);
         numeroPlaca = new JLabelEditPlaca("Número da Placa:", 430, 75, 200);
+        cpfMotorista = new JLabelEditCpf("Número do CPF do motorista", 430,75, 200);
+        nomeMotorista = new JLabelEditString("Nome do motorista", 430,75, 200);
+        //TODO Falta realizar os privateString
         
         this.add(marca);
         this.add(modelo);
-        this.add(numeroRenavam);
         this.add(numeroPlaca);
+        this.add(cpfMotorista);
+        this.add(nomeMotorista);
         
         setSize(500, 200);
         super.setClassEntity("CadVeiculo");
@@ -72,13 +80,18 @@ public class painelVeiculo extends JPanelCadastro {
         this.modelo.setText(text);
     }
 
-    public void setRenavam(String text) {
-        this.numeroRenavam.setText(text);
-    }
-
     public void setNumeroPlaca(String text) {
         this.numeroPlaca.setText(text);
     }
     
+    public void setCpfMotorista(String text){
+        this.cpfMotorista.setText(text);
+    }
+    
+    public void setNomeMotorista(String text){
+        this.nomeMotorista.setText(text);
+    }
+    
+    //TODO falta terminar os outros SET
     
 }
