@@ -32,7 +32,7 @@ public class JLabelEdit extends JComponent {
     private JButton botton;
     private JLabel rotulo;
     private String mascara;
-    private String s;
+    private String caption;
     private DAO dao;
     private FormConsultaPadrao fcp;
     private String tabela;
@@ -148,7 +148,7 @@ public class JLabelEdit extends JComponent {
             campo = new JTextFieldBase(mascara);
             campo.setBounds(5, 20, width, 20);
         }
-        s = caption;
+        this.caption = caption;
 
         rotulo = new JLabel(caption);
         rotulo.setBounds(5, 2, width, 20);
@@ -169,7 +169,7 @@ public class JLabelEdit extends JComponent {
     }
 
     public String getRotulo(){
-        return s;
+        return caption;
     }
 
     public String getText() {

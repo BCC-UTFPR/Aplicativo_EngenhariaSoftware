@@ -1,20 +1,13 @@
-package database;
+package Persistencia.Database;
 
-import Persistencia.DAO;
 import Persistencia.DAOInterface;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
 
 /**
  *
@@ -22,128 +15,154 @@ import javax.persistence.Temporal;
  */
 
 @Entity
-@Table(name = "CAD_Veiculo")
-public class CadPessoas implements Serializable, DAOInterface {
+@Table(name = "CAD_VEICULO")
+public class CadVeiculo implements Serializable, DAOInterface {
 
     @Id
     @Column(name="ID")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "Ano")
-    private String Ano;
-    @Column(name = "Quilometragem")
-    private String Quilometragem;
-    @Column(name = "Placa")
-    private String Placa;
-    @Column(name = "Cor")
-    private String Cor;
-    @Column(name = "Marca")
-    private String Marca;
-    @Column(name = "Modelo")
-    private String Modelo;
-    @Column(name = "Categoria")
-    private String Categoria;
-    @Column(name = "Renavam")
-    private String Renavam;
-    @Column(name = "EstadoConservacao")
-    private String EstadoConservacao;
-    @Column(name = "ComentariosAdicionais")
-    private String ComentariosAdicionais;
+    @Column(name = "ANO")
+    private String ano;
+    @Column(name = "KM")
+    private double quilometragem;
+    @Column(name = "PLACA")
+    private String placa;
+    @Column(name = "COR")
+    private String cor;
+    @Column(name = "MARCA")
+    private String marca;
+    @Column(name = "MODELO")
+    private String modelo;
+    @Column(name = "CATEGORIA+CNH")
+    private String categoriaCNH;
+    @Column(name = "RENAVAM")
+    private String renavam;
+    @Column(name = "COMSERVACAO")
+    private String conservacao;
+    @Column(name = "COMENTARIOS")
+    private String comentarios;
 
-    public CadPessoas() {
-    }
+    public CadVeiculo() {}
 
-    public CadPessoas() {
-        this.id = id;
-        this.Ano = Ano;
-        this.Quilometragem = Quilometragem;
-        this.Placa = Placa;
-        this.Cor = Cor;
-        this.Marca = Marca;
-        this.Modelo = Modelo;
-        this.Categoria = Categoria;
-        this.Renavam = Renavam;
-		this.EstadoConservacao = EstadoConservacao;
-        this.ComentariosAdicionais = ComentariosAdicionais;
+    public CadVeiculo(String ano, double quilometragem, String placa, String cor, String marca, String modelo, String categoriaCNH, String renavam, String conservacao, String comentarios) {
+        this.ano = ano;
+        this.quilometragem = quilometragem;
+        this.placa = placa;
+        this.cor = cor;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.categoriaCNH = categoriaCNH;
+        this.renavam = renavam;
+        this.conservacao = conservacao;
+        this.comentarios = comentarios;
     }
 
     public String getAno() {
-        return Ano;
+        return ano;
     }
 
-    public void setAno(String Ano) {
-        this.Ano = Ano;
+    public void setAno(String ano) {
+        this.ano = ano;
     }
-    
-    public String getQuilometragem() {
-		return Quilometragem;
-	}
-	
-	public void setQuilometragem(String Quilometragem){
-		this.Quilometragem = Quilometragem;
-	}
+
+    public double getQuilometragem() {
+        return quilometragem;
+    }
+
+    public void setQuilometragem(double quilometragem) {
+        this.quilometragem = quilometragem;
+    }
 
     public String getPlaca() {
-		return Placa;
-	}
-	
-	public void setPlaca(String Placa){
-		this.Placa = Placa;
-	}
-	
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
     public String getCor() {
-		return Cor;
-	}
-	
-	public void setCor(String Cor){
-		this.Cor = Cor;
-	}
-	
-	public String getMarca() {
-		return Marca;
-	}
-	
-	public void setMarca(String Marca){
-		this.Marca = Marca;
-	}
-	
-	public String getModelo() {
-		return Modelo;
-	}
-	
-	public void setModelo(String Modelo){
-		this.Modelo = Modelo;
-	}
-	
-	public String getCategoria() {
-		return Categoria;
-	}
-	
-	public void setCategoria(String Categoria){
-		this.Categoria = Categoria;
-	}
-	
-	public String getRenavam() {
-		return Renavam;
-	}
-	
-	public void setRenavam(String Renavam){
-		this.Renavam = Renavam;
-	}
-	
-	public String getEstadoConservacao() {
-		return EstadoConservacao;
-	}
-	
-	public void setEstadoConservacao(String EstadoConservacao){
-		this.EstadoConservacao = EstadoConservacao;
-	}
-	
-	public String getComentariosAdicionais() {
-		return ComentariosAdicionais;
-	}
-	
-	public void setComentariosAdicionais(String ComentariosAdicionais){
-		this.ComentariosAdicionais = ComentariosAdicionais;
-	}
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getCategoriaCNH() {
+        return categoriaCNH;
+    }
+
+    public void setCategoriaCNH(String categoriaCNH) {
+        this.categoriaCNH = categoriaCNH;
+    }
+
+    public String getRenavam() {
+        return renavam;
+    }
+
+    public void setRenavam(String renavam) {
+        this.renavam = renavam;
+    }
+
+    public String getConservacao() {
+        return conservacao;
+    }
+
+    public void setConservacao(String conservacao) {
+        this.conservacao = conservacao;
+    }
+
+    public String getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(String comentarios) {
+        this.comentarios = comentarios;
+    }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    @Override
+    public Long getId() {
+        return this.id;
+    }
+
+    @Override
+    public String[] getColunas() {
+        return new String[]{"Id", "Marca", "Modelo", "Ano", "Placa", "Renavam", "Categoria CNH"};
+    }
+
+    @Override
+    public Object[] toArray() {
+        return new Object[]{id, marca, modelo, ano, placa, renavam, categoriaCNH};
+    }
+
+    @Override
+    public int[] getDefineRenderersColumn() {
+        return new int[]{40, 115, 115, 40, 115, 115, 60};}
+
+    @Override
+    public String getReferencia() {
+        return this.getRenavam();
+    }
 }

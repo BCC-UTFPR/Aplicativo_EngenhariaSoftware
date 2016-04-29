@@ -5,57 +5,59 @@
  */
 package Visao.Janelas.Componentes.Campos;
 
+import Visao.Janelas.Componentes.JTextAreaBase;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
-import javax.swing.JTextArea;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
 
 /**
  *
  * @author MATHEUS-NOTE
  */
-public class JLabelEditTextArea extends JTextArea {
+public class JLabelEditTextArea extends JComponent {
+    
+    private JLabel rotulo;
+    private JScrollPane sc;
+    private JTextAreaBase campo;
+    private String caption;
+    private boolean permicao;
 
-    public JLabelEditTextArea() {
+    public JLabelEditTextArea(String caption, int left, int top, int width, boolean b) {
 
-        this.addFocusListener(new java.awt.event.FocusListener() {
+        this.setLayout(null);
+        this.setBounds(left, top, (width+10), 100);
+        
+        permicao = b;
+        
+        campo = new JTextAreaBase();
+        
+        sc = new JScrollPane(campo);
+        sc.setBounds(5, 20, width, 100);
+        
+        this.caption = caption;
 
-            @Override
-            public void focusGained(FocusEvent e) {
-                setBackground(Color.YELLOW);
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                setBackground(Color.WHITE);
-            }
-
-        });
+        rotulo = new JLabel(caption);
+        rotulo.setBounds(5, 2, width, 20);
+        
+        this.add(rotulo);
+        this.add(sc);
 
     }
 
-    @Override
-    protected Document createDefaultModel() {
-        return new UpperCaseDocument();
+    public String getText() {
+        return this.campo.getText();
     }
 
-    static class UpperCaseDocument extends PlainDocument {
-
-        @Override
-         public void insertString(int offs, String str, AttributeSet a)
-             throws BadLocationException {
-
-             if (str == null) {
-                 return;
-             }
-             char[] upper = str.toCharArray();
-             for (int i = 0; i < upper.length; i++) {
-                 upper[i] = Character.toUpperCase(upper[i]);
-             }
-             super.insertString(offs, new String(upper), a);
-         }
-     }
+    public void setText(String campo) {
+        this.campo.setText(campo);
+    }
+    
+    public void setEnabledField(boolean b) {
+        this.campo.setEnabled(b);
+    }
 }
