@@ -38,17 +38,21 @@ public class CadViagem implements Serializable, DAOInterface {
     private String relatorioGastos;
     @Column(name = "RELATORIO_DANOS")
     private String relatorioDanos;
+    @Column(name = "STATUS")
+    private boolean finalizada;
 
     public CadViagem() {}
 
-    public CadViagem(Date dataChegada, Date dataSaida, double kmSaida, double kmChegada, String relatorioGastos, String relatorioDanos) {
+    public CadViagem(Date dataChegada, Date dataSaida, double kmSaida, double kmChegada, String relatorioGastos, String relatorioDanos, boolean finalizada) {
         this.dataChegada = dataChegada;
         this.dataSaida = dataSaida;
         this.kmSaida = kmSaida;
         this.kmChegada = kmChegada;
         this.relatorioGastos = relatorioGastos;
         this.relatorioDanos = relatorioDanos;
+        this.finalizada = finalizada;
     }
+
 
     public Date getDataChegada() {
         return dataChegada;
@@ -98,6 +102,14 @@ public class CadViagem implements Serializable, DAOInterface {
         this.relatorioDanos = relatorioDanos;
     }
 
+    public boolean isFinalizada() {
+        return finalizada;
+    }
+
+    public void setFinalizada(boolean finalizada) {
+        this.finalizada = finalizada;
+    }
+
     @Override
     public Long getId() {    
         return id;    
@@ -109,17 +121,26 @@ public class CadViagem implements Serializable, DAOInterface {
 
     @Override
     public String[] getColunas() {
-        return new String[]{"Id", "Funcionário", "Veículo", "Km Total", "Data Saída", "Data Chegada"};
+        if (finalizada)
+            return new String[]{"Id", "Funcionário", "Veículo", "Km Total", "Data Saída", "Data Chegada"};
+        else
+            return new String[]{"Id", "Funcionário", "Veículo", "Data Saída"};
     }
 
     @Override
     public Object[] toArray() {
-        return new Object[]{id, "", "", ""+(kmChegada-kmSaida), dataSaida, dataChegada};
+        if (finalizada)
+            return new Object[]{id, "", "", ""+(kmChegada-kmSaida), dataSaida, dataChegada};
+        else
+            return new Object[]{id, "", "", dataSaida};
     }
 
     @Override
     public int[] getDefineRenderersColumn() {
-        return new int[]{40, 140, 80, 80, 80, 80};
+        if (finalizada)
+            return new int[]{40, 140, 80, 80, 80, 80};
+        else
+            return new int[]{40, 160, 160, 140};
     }
 
     @Override

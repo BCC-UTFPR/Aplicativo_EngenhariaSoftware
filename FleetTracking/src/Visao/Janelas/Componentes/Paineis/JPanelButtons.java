@@ -226,6 +226,10 @@ public class JPanelButtons extends JPanelBase{
                 component.setText("");
                 component.setLabel("");
             }
+            if (panelClient.getComponent(i) instanceof JLabelEditTextArea){
+                JLabelEditTextArea component = (JLabelEditTextArea) panelClient.getComponent(i);
+                component.setText("");
+            }
         }
         panelClient.setId("[]");
         panelClient.limpar();

@@ -17,7 +17,7 @@ public class ValidadorRenavam {
         if(renavam.matches("^([0-9]{9})$")){
             renavam = "00" + renavam;
         }
-
+        
         // Valida se possui 11 digitos pos formatacao
         if(!renavam.matches("[0-9]{11}")){
             return false;
