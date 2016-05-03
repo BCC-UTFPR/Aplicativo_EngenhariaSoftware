@@ -22,7 +22,7 @@ public class JLabelEditRenavam extends JLabelEdit{
             @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
                 if (!new ValidadorRenavam().validarRenavam(campo.getText())){
-                    JOptionPane.showMessageDialog(null, "Atenção! CPF inválido.");                    
+                    JOptionPane.showMessageDialog(null, "Atenção! Renavam inválido.");                    
                 }
             }
         });        

@@ -20,7 +20,6 @@ import javax.swing.text.PlainDocument;
 public class JTextAreaBase extends JTextArea {
 
     public JTextAreaBase() {
-
         this.addFocusListener(new java.awt.event.FocusListener() {
 
             @Override

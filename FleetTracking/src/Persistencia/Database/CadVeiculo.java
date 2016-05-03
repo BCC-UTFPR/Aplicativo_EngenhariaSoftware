@@ -34,7 +34,7 @@ public class CadVeiculo implements Serializable, DAOInterface {
     private String marca;
     @Column(name = "MODELO")
     private String modelo;
-    @Column(name = "CATEGORIA+CNH")
+    @Column(name = "CATEGORIA_CNH")
     private String categoriaCNH;
     @Column(name = "RENAVAM")
     private String renavam;

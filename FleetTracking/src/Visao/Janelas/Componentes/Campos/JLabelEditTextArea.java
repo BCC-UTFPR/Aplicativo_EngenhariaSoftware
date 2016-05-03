@@ -30,14 +30,14 @@ public class JLabelEditTextArea extends JComponent {
     public JLabelEditTextArea(String caption, int left, int top, int width, boolean b) {
 
         this.setLayout(null);
-        this.setBounds(left, top, (width+10), 100);
+        this.setBounds(left, top, (width+10), 140);
         
         permicao = b;
         
         campo = new JTextAreaBase();
         
         sc = new JScrollPane(campo);
-        sc.setBounds(5, 20, width, 100);
+        sc.setBounds(5, 20, width, 120);
         
         this.caption = caption;
 
