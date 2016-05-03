@@ -9,9 +9,9 @@ package Serviços;
  *
  * @author AndreLucas
  */
-public class ValidadorRenavam {
+public class ValidaRenavam {
     
-    public boolean validarRenavam(String renavam){
+    public boolean validar(String renavam){
 
         // Completa com zeros a esquerda se for no padrao antigo de 9 digitos
         if(renavam.matches("^([0-9]{9})$")){

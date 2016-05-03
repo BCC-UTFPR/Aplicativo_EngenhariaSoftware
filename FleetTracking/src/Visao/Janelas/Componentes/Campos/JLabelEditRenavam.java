@@ -5,7 +5,7 @@
  */
 package Visao.Janelas.Componentes.Campos;
 
-import Serviços.ValidadorRenavam;
+import Serviços.ValidaRenavam;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 
@@ -21,7 +21,7 @@ public class JLabelEditRenavam extends JLabelEdit{
         super.campo.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
-                if (!new ValidadorRenavam().validarRenavam(campo.getText())){
+                if (!new ValidaRenavam().validar(campo.getText())){
                     JOptionPane.showMessageDialog(null, "Atenção! Renavam inválido.");                    
                 }
             }
