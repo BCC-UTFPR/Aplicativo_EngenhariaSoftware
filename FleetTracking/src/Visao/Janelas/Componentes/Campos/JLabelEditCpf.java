@@ -5,6 +5,7 @@
  */
 package Visao.Janelas.Componentes.Campos;
 
+import Serviços.ValidaCPF;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 
@@ -21,7 +22,7 @@ public class JLabelEditCpf extends JLabelEdit{
         super.campo.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
-                if (true/*!ValidaCPF()*/){
+                if (!new ValidaCPF().validar(campo.getText())){
                     JOptionPane.showMessageDialog(null, "Atenção! CPF inválido.");                    
                 }
             }
