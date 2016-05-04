@@ -5,6 +5,7 @@
  */
 package Visao.Janelas.Principal;
 
+import Visao.Janelas.Componentes.Paineis.Cadastros.painelChegadaVeiculo;
 import Visao.Janelas.Componentes.Paineis.Cadastros.painelFuncionario;
 import Visao.Janelas.Componentes.Paineis.Cadastros.painelSaidaVeiculo;
 import Visao.Janelas.Componentes.Paineis.Cadastros.painelVeiculo;
@@ -100,6 +101,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuViagem.add(jMenuViagemIniciar);
 
         jMenuViagemFinalizar.setText("Finalizar Viagem");
+        jMenuViagemFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuViagemFinalizarActionPerformed(evt);
+            }
+        });
         jMenuViagem.add(jMenuViagemFinalizar);
 
         jMenuBar.add(jMenuViagem);
@@ -164,6 +170,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Form = new FormCadastroPadrao(painel, "Cadastro de Veículo");
         Form.setVisible(true);
     }//GEN-LAST:event_jMenuViagemIniciarActionPerformed
+
+    private void jMenuViagemFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuViagemFinalizarActionPerformed
+        painel = null;
+        try {
+            painel = new painelChegadaVeiculo();
+        } catch (ParseException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Form = new FormCadastroPadrao(painel, "Cadastro de Veículo");
+        Form.setVisible(true);
+    }//GEN-LAST:event_jMenuViagemFinalizarActionPerformed
     
     private void sair() {
         int opcao = JOptionPane.showOptionDialog(this, "Deseja realmente sair?",

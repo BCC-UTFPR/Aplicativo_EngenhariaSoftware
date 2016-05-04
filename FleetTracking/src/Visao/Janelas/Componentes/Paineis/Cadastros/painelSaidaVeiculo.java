@@ -8,8 +8,6 @@ package Visao.Janelas.Componentes.Paineis.Cadastros;
 import Persistencia.Database.CadFuncionario;
 import Persistencia.Database.CadVeiculo;
 import Persistencia.Database.CadViagem;
-import Visao.Janelas.Componentes.Campos.JLabelEditData;
-import Visao.Janelas.Componentes.Campos.JLabelEditInteger;
 import Visao.Janelas.Componentes.Campos.JLabelEditStringComConsulta;
 import Visao.Janelas.Componentes.Paineis.JPanelCadastro;
 import java.text.DateFormat;
