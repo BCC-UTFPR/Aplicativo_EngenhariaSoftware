@@ -14,8 +14,8 @@ import java.text.ParseException;
 public class JLabelEditInteger extends JLabelEdit {
     private String mask1 = "";
 
-    public JLabelEditInteger(String caption, int left, int top, int width, boolean b, String mask) throws ParseException {
-        super(caption, left, top, width, b, false, null, null);
+    public JLabelEditInteger(String caption, int left, int top, int width, boolean b, String mask, boolean obrigatorio) throws ParseException {
+        super(caption, left, top, width, b, false, null, null, obrigatorio);
         if (b){
             this.mask1 = mask;
             super.setMask(mask1);

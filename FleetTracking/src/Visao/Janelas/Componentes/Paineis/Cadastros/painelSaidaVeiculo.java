@@ -26,16 +26,14 @@ public class painelSaidaVeiculo extends JPanelCadastro {
     
     JLabelEditStringComConsulta motorista;
     JLabelEditStringComConsulta veiculo;
-    JLabelEditData dataSaida;
-    JLabelEditInteger quilometragemSaida;
     
     private CadViagem dao;
     private String pesquisa = "id";
     
      public painelSaidaVeiculo() throws ParseException  {
         
-        motorista = new JLabelEditStringComConsulta("Motorista Responsável:", 5, 35, 600, "CadFuncionario", "registro");
-        veiculo = new JLabelEditStringComConsulta("Veículo:", 5, 75, 600, "CadVeiculo", "placa");
+        motorista = new JLabelEditStringComConsulta("Motorista Responsável:", 5, 35, 600, "CadFuncionario", "registro", true);
+        veiculo = new JLabelEditStringComConsulta("Veículo:", 5, 75, 600, "CadVeiculo", "placa", true);
         
         this.add(motorista);
         this.add(veiculo);
@@ -84,7 +82,7 @@ public class painelSaidaVeiculo extends JPanelCadastro {
     }
 
     public Date getDataSistema() {
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date d = new Date(System.currentTimeMillis());
         String data = dateFormat.format(d);
         try {

@@ -41,7 +41,7 @@ public class JLabelEdit extends JComponent {
     private boolean permicao;
     private boolean look;
     
-    public JLabelEdit(String caption, int left, int top, int width, Boolean showMask, boolean b, String table, String pes) throws ParseException {
+    public JLabelEdit(String caption, int left, int top, int width, Boolean showMask, boolean b, String table, String pes, boolean obrigatorio) throws ParseException {
         
         this.setLayout(null);
         this.setBounds(left, top, (width+10), 50);
@@ -135,9 +135,16 @@ public class JLabelEdit extends JComponent {
         rotulo = new JLabel(caption);
         rotulo.setBounds(5, 2, width, 20);
         
+        setObrigatoriedade(obrigatorio);
+        
         this.add(rotulo);
         this.add(campo);
         
+    }
+    
+    public void setObrigatoriedade(boolean obrigatorio) {
+        campo.setObrigatoriedade(obrigatorio);
+        campo.setMenssagem(caption);
     }
 
     public void setLabel(String a){

@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class JLabelEditCpf extends JLabelEdit{
 
-    public JLabelEditCpf(String caption, int left, int top, int width) throws ParseException {
-        super(caption, left, top, width, true, false, null, null);
+    public JLabelEditCpf(String caption, int left, int top, int width, boolean obrigatorio) throws ParseException {
+        super(caption, left, top, width, true, false, null, null, obrigatorio);
         super.setMask("###.###.###-##");
         
         super.campo.addFocusListener(new java.awt.event.FocusAdapter() {

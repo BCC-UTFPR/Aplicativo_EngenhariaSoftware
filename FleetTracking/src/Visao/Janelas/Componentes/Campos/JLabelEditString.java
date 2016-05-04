@@ -13,7 +13,7 @@ import java.text.ParseException;
  */
 public class JLabelEditString extends JLabelEdit{
 
-    public JLabelEditString(String caption, int left, int top, int width) throws ParseException {
-        super(caption, left, top, width, false, false, null, null);
+    public JLabelEditString(String caption, int left, int top, int width, boolean obrigatorio) throws ParseException {
+        super(caption, left, top, width, false, false, null, null, obrigatorio);
     }
 }

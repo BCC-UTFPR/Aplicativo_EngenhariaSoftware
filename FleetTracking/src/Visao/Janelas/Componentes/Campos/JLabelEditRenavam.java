@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class JLabelEditRenavam extends JLabelEdit{
 
-    public JLabelEditRenavam(String caption, int left, int top, int width) throws ParseException {
-        super(caption, left, top, width, true, false, null, null);
+    public JLabelEditRenavam(String caption, int left, int top, int width, boolean obrigatorio) throws ParseException {
+        super(caption, left, top, width, true, false, null, null, obrigatorio);
         
         super.campo.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override

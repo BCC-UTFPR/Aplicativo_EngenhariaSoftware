@@ -6,14 +6,9 @@
 package Visao.Janelas.Componentes.Campos;
 
 import Visao.Janelas.Componentes.JTextAreaBase;
-import java.awt.Color;
-import java.awt.event.FocusEvent;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.PlainDocument;
 
 /**
  *

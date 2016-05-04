@@ -7,6 +7,7 @@ package Visao.Janelas.Componentes;
 
 import java.awt.Color;
 import java.awt.event.FocusEvent;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -35,7 +36,7 @@ public class JTextAreaBase extends JTextArea {
         });
 
     }
-
+    
     @Override
     protected Document createDefaultModel() {
         return new UpperCaseDocument();
