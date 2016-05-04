@@ -120,7 +120,6 @@ public class FormConsultaPadrao extends JDialog {
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         btOk.setText("Ok");
-        btOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paineis/cadastro/imageicons/Icone ok.png")));
         btOk.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +128,6 @@ public class FormConsultaPadrao extends JDialog {
         });
 
         btCancelar.setText("Cancelar");
-        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paineis/cadastro/imageicons/Icone Cancelar.png")));
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -293,21 +291,7 @@ public class FormConsultaPadrao extends JDialog {
     }
 
     private void btOkActionPerformed(java.awt.event.ActionEvent evt) {
-        try {
-            if (sera) {
-                objSelect = getSelecionado();
-                aPanelClient.getInstanceObj(objSelect);
-                aPanelClient.setObjEntity(objSelect);
-                aPanelClient.setUpdate(true);
-                this.dispose();
-            } else {
-                objSelect = (DAOInterface) getSelecionado();
-                this.dispose();
-            }
-            
-        } catch (Exception ex) {
-            Logger.getLogger(FormConsultaPadrao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        actionReturnEvent();
     }
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {
@@ -328,6 +312,10 @@ public class FormConsultaPadrao extends JDialog {
     }
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
+        actionReturnEvent();
+    }
+    
+    private void actionReturnEvent() {
         try {
             if (sera) {
                 objSelect = getSelecionado();

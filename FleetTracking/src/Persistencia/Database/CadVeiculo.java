@@ -23,13 +23,11 @@ public class CadVeiculo implements Serializable, DAOInterface {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     @Column(name = "ANO")
-    private String ano;
+    private int ano;
     @Column(name = "KM")
     private double quilometragem;
     @Column(name = "PLACA")
     private String placa;
-    @Column(name = "COR")
-    private String cor;
     @Column(name = "MARCA")
     private String marca;
     @Column(name = "MODELO")
@@ -45,11 +43,10 @@ public class CadVeiculo implements Serializable, DAOInterface {
 
     public CadVeiculo() {}
 
-    public CadVeiculo(String ano, double quilometragem, String placa, String cor, String marca, String modelo, String categoriaCNH, String renavam, String conservacao, String comentarios) {
+    public CadVeiculo(int ano, double quilometragem, String placa, String marca, String modelo, String categoriaCNH, String renavam, String conservacao, String comentarios) {
         this.ano = ano;
         this.quilometragem = quilometragem;
         this.placa = placa;
-        this.cor = cor;
         this.marca = marca;
         this.modelo = modelo;
         this.categoriaCNH = categoriaCNH;
@@ -58,11 +55,11 @@ public class CadVeiculo implements Serializable, DAOInterface {
         this.comentarios = comentarios;
     }
 
-    public String getAno() {
+    public int getAno() {
         return ano;
     }
 
-    public void setAno(String ano) {
+    public void setAno(int ano) {
         this.ano = ano;
     }
 
@@ -80,14 +77,6 @@ public class CadVeiculo implements Serializable, DAOInterface {
 
     public void setPlaca(String placa) {
         this.placa = placa;
-    }
-
-    public String getCor() {
-        return cor;
-    }
-
-    public void setCor(String cor) {
-        this.cor = cor;
     }
 
     public String getMarca() {
@@ -163,6 +152,6 @@ public class CadVeiculo implements Serializable, DAOInterface {
 
     @Override
     public String getReferencia() {
-        return this.getRenavam();
+        return this.getPlaca();
     }
 }

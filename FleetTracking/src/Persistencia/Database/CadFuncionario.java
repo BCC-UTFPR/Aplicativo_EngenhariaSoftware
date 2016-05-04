@@ -106,21 +106,20 @@ public class CadFuncionario implements Serializable, DAOInterface {
     
     @Override
     public String[] getColunas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new String[]{"Id", "Nome", "Registro", "CPF", "Categoria CNH"};
     }
 
     @Override
     public Object[] toArray() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new Object[]{id, nome, registro, cpf, cnh};
     }
 
     @Override
     public int[] getDefineRenderersColumn() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        return new int[]{40, 230, 115, 115, 60};}
 
     @Override
     public String getReferencia() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.getNome();
     }
 }

@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -24,6 +26,12 @@ public class CadViagem implements Serializable, DAOInterface {
     @Column(name="ID")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private CadFuncionario motorista;
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private CadVeiculo veiculo;
     @Temporal(javax.persistence.TemporalType.DATE)
     @Column(name = "DATA_CHEGADA")
     private Date dataChegada;
@@ -43,7 +51,9 @@ public class CadViagem implements Serializable, DAOInterface {
 
     public CadViagem() {}
 
-    public CadViagem(Date dataChegada, Date dataSaida, double kmSaida, double kmChegada, String relatorioGastos, String relatorioDanos, boolean finalizada) {
+    public CadViagem(CadFuncionario motorista, CadVeiculo veiculo, Date dataChegada, Date dataSaida, double kmSaida, double kmChegada, String relatorioGastos, String relatorioDanos, boolean finalizada) {
+        this.motorista = motorista;
+        this.veiculo = veiculo;
         this.dataChegada = dataChegada;
         this.dataSaida = dataSaida;
         this.kmSaida = kmSaida;
@@ -52,7 +62,22 @@ public class CadViagem implements Serializable, DAOInterface {
         this.relatorioDanos = relatorioDanos;
         this.finalizada = finalizada;
     }
+    
+    public CadFuncionario getMotorista() {
+        return this.motorista;
+    }
 
+    public void setMotorista(CadFuncionario motorista) {
+        this.motorista = motorista;
+    }
+
+    public CadVeiculo getVeiculo() {
+        return this.veiculo;
+    }
+
+    public void setVeiculo(CadVeiculo veiculo) {
+        this.veiculo = veiculo;
+    }
 
     public Date getDataChegada() {
         return dataChegada;
@@ -130,9 +155,9 @@ public class CadViagem implements Serializable, DAOInterface {
     @Override
     public Object[] toArray() {
         if (finalizada)
-            return new Object[]{id, "", "", ""+(kmChegada-kmSaida), dataSaida, dataChegada};
+            return new Object[]{id, motorista.getRegistro(), veiculo.getPlaca(), ""+(kmChegada-kmSaida), dataSaida, dataChegada};
         else
-            return new Object[]{id, "", "", dataSaida};
+            return new Object[]{id, motorista.getRegistro(), veiculo.getPlaca(), dataSaida};
     }
 
     @Override
