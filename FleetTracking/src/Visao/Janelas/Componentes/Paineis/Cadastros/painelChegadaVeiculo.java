@@ -128,7 +128,6 @@ public class painelChegadaVeiculo extends JPanelCadastro {
         } else {
             v.setQuilometragem(Double.parseDouble(quilometragem.getText()));
         }
-        
         return d;        
     }
 
