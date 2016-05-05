@@ -31,5 +31,9 @@ public class FormCadastroPadrao extends JFrame {
         panelBotton.OrganizeScreen(panelBotton);
 
     }
+    
+    public void setButtonStatus() {
+        panelBotton.setButtonStatus();
+    }
 
 }

@@ -5,7 +5,6 @@
  */
 package Visao.Janelas.Componentes.Paineis;
 
-import Visao.Janelas.Componentes.Paineis.JPanelBase;
 import Persistencia.DAO;
 import Visao.Janelas.Componentes.Campos.JLabelEdit;
 import Visao.Janelas.Componentes.Campos.JLabelEditTextArea;
@@ -233,5 +232,9 @@ public class JPanelButtons extends JPanelBase{
         }
         panelClient.setId("[]");
         panelClient.limpar();
+    }
+    
+    public void setButtonStatus() {
+        OrganizeScreen(btOpen);
     }
 }

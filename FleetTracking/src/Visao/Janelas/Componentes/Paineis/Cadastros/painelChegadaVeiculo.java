@@ -15,6 +15,7 @@ import Visao.Janelas.Componentes.Campos.JLabelEditStringComConsulta;
 import Visao.Janelas.Componentes.Campos.JLabelEditTextArea;
 import Visao.Janelas.Componentes.FormConsultaPadrao;
 import Visao.Janelas.Componentes.Paineis.JPanelCadastro;
+import java.awt.event.FocusListener;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -70,7 +72,7 @@ public class painelChegadaVeiculo extends JPanelCadastro {
         cc.setMotorista(f);
         cc.setVeiculo(v);
         cc.setRelatorioDanos(conservacao.getText());
-        cc.setKmChegada(Double.parseDouble(quilometragem.getText()));
+        cc.setKmChegada(getQuilometragem(v));
         cc.setFinalizada(true);
         
         v.setQuilometragem(Double.parseDouble(quilometragem.getText()));
@@ -116,6 +118,13 @@ public class painelChegadaVeiculo extends JPanelCadastro {
 
     public void setVeiculo(CadVeiculo veiculo) {
         this.veiculo.setReferancia(veiculo);
+    }
+    
+    public double getQuilometragem(CadVeiculo v) {
+        //monegat implemente aqui a questão da validação da quilometragem
+        
+        return Double.parseDouble(quilometragem.getText());
+        
     }
 
     public Date getDataSistema() {
