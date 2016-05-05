@@ -75,7 +75,6 @@ public class painelChegadaVeiculo extends JPanelCadastro {
         cc.setKmChegada(getQuilometragem(v));
         cc.setFinalizada(true);
         
-        v.setQuilometragem(Double.parseDouble(quilometragem.getText()));
         v.setConservacao(v.getConservacao()+"\n"+conservacao.getText());
         
         super.setObjEntity(v);
@@ -121,10 +120,7 @@ public class painelChegadaVeiculo extends JPanelCadastro {
     }
     
     public double getQuilometragem(CadVeiculo v) {
-        //monegat implemente aqui a questão da validação da quilometragem
-        
-        return Double.parseDouble(quilometragem.getText());
-        
+        //monegat implemente aqui a questão da validação da quilometragem        
     }
 
     public Date getDataSistema() {
