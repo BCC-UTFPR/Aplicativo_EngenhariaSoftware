@@ -120,7 +120,16 @@ public class painelChegadaVeiculo extends JPanelCadastro {
     }
     
     public double getQuilometragem(CadVeiculo v) {
-        //monegat implemente aqui a questão da validação da quilometragem        
+        double d = Double.parseDouble(quilometragem.getText());
+        
+        if (d <= v.getQuilometragem()) {
+            JOptionPane.showMessageDialog(this, "A quilometragem é invalida \n"
+                    + "Por favor corrija!");
+        } else {
+            v.setQuilometragem(Double.parseDouble(quilometragem.getText()));
+        }
+        
+        return d;        
     }
 
     public Date getDataSistema() {
