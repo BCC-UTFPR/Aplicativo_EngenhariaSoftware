@@ -5,6 +5,7 @@
  */
 package Visao.Janelas.Componentes.Campos;
 
+import Serviços.ValidaData;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 
@@ -14,14 +15,14 @@ import javax.swing.JOptionPane;
  */
 public class JLabelEditData extends JLabelEdit {
     
-    public JLabelEditData(String caption, int left, int top, int width) throws ParseException {
-        super(caption, left, top, width, true, false, null, null);
+    public JLabelEditData(String caption, int left, int top, int width, boolean obrigatorio) throws ParseException {
+        super(caption, left, top, width, true, false, null, null, obrigatorio);
         super.setMask("##/##/####");
 
         super.campo.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
-                if (true/*!ValidaData()*/){
+                if (!new ValidaData().validar(campo.getText())){
                     JOptionPane.showMessageDialog(null, "Atenção! Data inválido.");
                 }
             }

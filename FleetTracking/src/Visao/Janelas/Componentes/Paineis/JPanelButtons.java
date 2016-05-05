@@ -5,9 +5,9 @@
  */
 package Visao.Janelas.Componentes.Paineis;
 
-import Visao.Janelas.Componentes.Paineis.JPanelBase;
 import Persistencia.DAO;
 import Visao.Janelas.Componentes.Campos.JLabelEdit;
+import Visao.Janelas.Componentes.Campos.JLabelEditTextArea;
 import Visao.Janelas.Componentes.FormConsultaPadrao;
 import Visao.Janelas.Componentes.JButtonBase;
 import java.awt.Color;
@@ -76,6 +76,9 @@ public class JPanelButtons extends JPanelBase{
         for (int i = 0; i < panelClient.getComponentCount(); i++) {
            if(panelClient.getComponent(i) instanceof JLabelEdit){
                 JLabelEdit component = (JLabelEdit) panelClient.getComponent(i);
+                component.setEnabledField(enabled);
+           } else if (panelClient.getComponent(i) instanceof JLabelEditTextArea) {
+                JLabelEditTextArea component = (JLabelEditTextArea) panelClient.getComponent(i);
                 component.setEnabledField(enabled);
            }
         }
@@ -222,8 +225,16 @@ public class JPanelButtons extends JPanelBase{
                 component.setText("");
                 component.setLabel("");
             }
+            if (panelClient.getComponent(i) instanceof JLabelEditTextArea){
+                JLabelEditTextArea component = (JLabelEditTextArea) panelClient.getComponent(i);
+                component.setText("");
+            }
         }
         panelClient.setId("[]");
         panelClient.limpar();
+    }
+    
+    public void setButtonStatus() {
+        OrganizeScreen(btOpen);
     }
 }

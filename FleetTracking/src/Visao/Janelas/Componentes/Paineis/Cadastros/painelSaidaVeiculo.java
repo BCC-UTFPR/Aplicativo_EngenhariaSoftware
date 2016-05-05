@@ -4,94 +4,97 @@
  * and open the template in the editor.
  */
 package Visao.Janelas.Componentes.Paineis.Cadastros;
-import Visao.Janelas.Componentes.Campos.JLabelEditPlaca;
-import Visao.Janelas.Componentes.Campos.JLabelEditRenavam;
-import Visao.Janelas.Componentes.Campos.JLabelEditString;
+
+import Persistencia.Database.CadFuncionario;
+import Persistencia.Database.CadVeiculo;
+import Persistencia.Database.CadViagem;
+import Visao.Janelas.Componentes.Campos.JLabelEditStringComConsulta;
 import Visao.Janelas.Componentes.Paineis.JPanelCadastro;
-import Visao.Janelas.Componentes.Campos.JLabelEditCpf;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author jfilhogn
  */
 public class painelSaidaVeiculo extends JPanelCadastro {
     
-    private JLabelEditString marca;
-    private JLabelEditString modelo;
-    private JLabelEditPlaca numeroPlaca;
-    private JLabelEditCpf cpfMotorista;
-    private JLabelEditString nomeMotorista;
+    JLabelEditStringComConsulta motorista;
+    JLabelEditStringComConsulta veiculo;
     
-    //TODO fiz no modo que pensei, temos que ver se o formato é dessa forma
-    private String dataSaida;
-    private String observacoes;
-    private String combustivelPresente;
-    //private JRadioButtonEdit categoriaCNH; criar a classe JRadioButtonEdit
-    //private JTextAreaEdit comentarios; criar a classe JTextAreaEdit
-
-    //private CadVeiculo dao;
-    private String pesquisa = "motorista";
+    private CadViagem dao;
+    private String pesquisa = "id";
     
      public painelSaidaVeiculo() throws ParseException  {
         
-        marca = new JLabelEditString("Marca:", 5, 35, 400);
-        modelo = new JLabelEditString("Modelo:", 5, 75, 200);
-        numeroPlaca = new JLabelEditPlaca("Número da Placa:", 430, 75, 200);
-        cpfMotorista = new JLabelEditCpf("Número do CPF do motorista", 430,75, 200);
-        nomeMotorista = new JLabelEditString("Nome do motorista", 430,75, 200);
-        //TODO Falta realizar os privateString
+        motorista = new JLabelEditStringComConsulta("Motorista Responsável:", 5, 35, 600, "CadFuncionario", "registro", true);
+        veiculo = new JLabelEditStringComConsulta("Veículo:", 5, 75, 600, "CadVeiculo", "placa", true);
         
-        this.add(marca);
-        this.add(modelo);
-        this.add(numeroPlaca);
-        this.add(cpfMotorista);
-        this.add(nomeMotorista);
+        this.add(motorista);
+        this.add(veiculo);
         
         setSize(500, 200);
-        super.setClassEntity("CadVeiculo");
+        super.setClassEntity("CadViagem");
         super.setPesquisa(pesquisa);
     }  
     
     @Override
     public void setInstanceObj() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        CadViagem cc = new CadViagem();
+        CadVeiculo v = (CadVeiculo) veiculo.getReferancia();
+        CadFuncionario f = (CadFuncionario) motorista.getReferancia();
+        
+        if (this.getUpdate()){
+            cc.setId(Long.parseLong(super.getId()));
+        }
+        cc.setDataSaida(getDataSistema());
+        cc.setMotorista(f);
+        cc.setVeiculo(v);
+        cc.setKmSaida(v.getQuilometragem());
+        cc.setFinalizada(false);
+        
+        super.setObjEntity(cc);
     }
 
     @Override
     public void getInstanceObj(Object objSelect) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        dao = (CadViagem) objSelect;
+        super.setId(dao.getId()+"");
+        
+        this.setMotorista(dao.getMotorista());
+        this.setVeiculo(dao.getVeiculo());
+    
     }
+
+    public void setMotorista(CadFuncionario motorista) {
+        this.motorista.setReferancia(motorista);
+    }
+
+    public void setVeiculo(CadVeiculo veiculo) {
+        this.veiculo.setReferancia(veiculo);
+    }
+
+    public Date getDataSistema() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date d = new Date(System.currentTimeMillis());
+        String data = dateFormat.format(d);
+        try {
+            d = dateFormat.parse(data);
+        } catch (ParseException ex) {
+            Logger.getLogger(painelSaidaVeiculo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return d;
+    }
+    
+    @Override
+    public void setEditavel(boolean b) {}
 
     @Override
-    public void setEditavel(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void limpar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    public void setMarca(String text) {
-        this.marca.setText(text);
-    }
-
-    public void setModelo(String text) {
-        this.modelo.setText(text);
-    }
-
-    public void setNumeroPlaca(String text) {
-        this.numeroPlaca.setText(text);
-    }
-    
-    public void setCpfMotorista(String text){
-        this.cpfMotorista.setText(text);
-    }
-    
-    public void setNomeMotorista(String text){
-        this.nomeMotorista.setText(text);
-    }
-    
-    //TODO falta terminar os outros SET
-    
+    public void limpar() {}
 }

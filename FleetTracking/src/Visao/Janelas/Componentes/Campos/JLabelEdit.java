@@ -32,7 +32,8 @@ public class JLabelEdit extends JComponent {
     private JButton botton;
     private JLabel rotulo;
     private String mascara;
-    private String s;
+    private String caption;
+    private DAOInterface obj = null;
     private DAO dao;
     private FormConsultaPadrao fcp;
     private String tabela;
@@ -40,7 +41,7 @@ public class JLabelEdit extends JComponent {
     private boolean permicao;
     private boolean look;
     
-    public JLabelEdit(String caption, int left, int top, int width, Boolean showMask, boolean b, String table, String pes) throws ParseException {
+    public JLabelEdit(String caption, int left, int top, int width, Boolean showMask, boolean b, String table, String pes, boolean obrigatorio) throws ParseException {
         
         this.setLayout(null);
         this.setBounds(left, top, (width+10), 50);
@@ -70,26 +71,7 @@ public class JLabelEdit extends JComponent {
 
                 @Override
                    public void keyReleased(KeyEvent arg0) {
-                        if (campo.getText().equals(" ")) {
-                           try {
-                                if (dao == null){
-                                    dao = new DAO();
-                                }
-
-                                String hqlQuery = "from "+tabela;
-
-                                List l = dao.select(hqlQuery);
-
-                                fcp = new FormConsultaPadrao("Consulta", l, tabela, pesquisa);
-                                fcp.setModal(true);
-                                fcp.setVisible(true);
-                                DAOInterface obj = (DAOInterface) fcp.getReferencia();
-                                campo.setText(""+obj.getId());
-
-                            } catch (Exception ex) {
-                                Logger.getLogger(JLabelEdit.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                        }
+                        actionSelected();
                    }
                 @Override
                    public void keyTyped(KeyEvent arg0) { }
@@ -148,14 +130,21 @@ public class JLabelEdit extends JComponent {
             campo = new JTextFieldBase(mascara);
             campo.setBounds(5, 20, width, 20);
         }
-        s = caption;
+        this.caption = caption;
 
         rotulo = new JLabel(caption);
         rotulo.setBounds(5, 2, width, 20);
         
+        setObrigatoriedade(obrigatorio);
+        
         this.add(rotulo);
         this.add(campo);
         
+    }
+    
+    public void setObrigatoriedade(boolean obrigatorio) {
+        campo.setObrigatoriedade(obrigatorio);
+        campo.setMenssagem(caption);
     }
 
     public void setLabel(String a){
@@ -169,7 +158,7 @@ public class JLabelEdit extends JComponent {
     }
 
     public String getRotulo(){
-        return s;
+        return caption;
     }
 
     public String getText() {
@@ -192,27 +181,24 @@ public class JLabelEdit extends JComponent {
     }
 
     private void jFormattedTextField1MouseClicked(java.awt.event.MouseEvent evt) {
-        try {
-            if (dao == null){
-                dao = new DAO();
-            }
-
-            String hqlQuery = "from "+tabela;
-
-            List l = dao.select(hqlQuery);
-
-            fcp = new FormConsultaPadrao("Consulta", l, tabela, pesquisa);
-            fcp.setModal(true);
-            fcp.setVisible(true);
-            DAOInterface obj = (DAOInterface) fcp.getReferencia();
-            campo.setText(""+obj.getId());
-
-        } catch (Exception ex) {
-            Logger.getLogger(JLabelEdit.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        actionSelected();
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        actionSelected();
+    }
+    
+    public DAOInterface getReferancia() {
+        return obj;
+    }
+    
+    public void setReferancia(DAOInterface obj) {
+        this.obj = obj;
+        campo.setText(""+obj.getId());
+        label.setText(obj.getReferencia());
+    }
+    
+    private void actionSelected() {
         try {
             if (dao == null){
                 dao = new DAO();
@@ -225,12 +211,12 @@ public class JLabelEdit extends JComponent {
             fcp = new FormConsultaPadrao("Consulta", l, tabela, pesquisa);
             fcp.setModal(true);
             fcp.setVisible(true);
-            DAOInterface obj = (DAOInterface) fcp.getReferencia();
+            obj = (DAOInterface) fcp.getReferencia();
             campo.setText(""+obj.getId());
             label.setText(obj.getReferencia());
 
         } catch (Exception ex) {
             Logger.getLogger(JLabelEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
+    }
 }

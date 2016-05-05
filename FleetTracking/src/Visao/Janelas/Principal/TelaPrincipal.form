@@ -36,6 +36,32 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cadastrar Ve&#xed;culo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuCadastroVeiculoActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenuViagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Viagem"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuViagemIniciar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Iniciar Viagem"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuViagemIniciarActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuViagemFinalizar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Finalizar Viagem"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuViagemFinalizarActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

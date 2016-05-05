@@ -5,7 +5,7 @@
  */
 package Visao.Janelas.Componentes.Campos;
 
-import Serviços.ValidadorRenavam;
+import Serviços.ValidaRenavam;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 
@@ -15,14 +15,14 @@ import javax.swing.JOptionPane;
  */
 public class JLabelEditRenavam extends JLabelEdit{
 
-    public JLabelEditRenavam(String caption, int left, int top, int width) throws ParseException {
-        super(caption, left, top, width, true, false, null, null);
+    public JLabelEditRenavam(String caption, int left, int top, int width, boolean obrigatorio) throws ParseException {
+        super(caption, left, top, width, true, false, null, null, obrigatorio);
         
         super.campo.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
-                if (!new ValidadorRenavam().validarRenavam(campo.getText())){
-                    JOptionPane.showMessageDialog(null, "Atenção! CPF inválido.");                    
+                if (!new ValidaRenavam().validar(campo.getText())){
+                    JOptionPane.showMessageDialog(null, "Atenção! Renavam inválido.");                    
                 }
             }
         });        

@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultFormatterFactory;
@@ -27,6 +28,8 @@ import javax.swing.text.PlainDocument;
 public class JTextFieldBase extends JFormattedTextField {
 
     private boolean permicao;
+    private boolean obrigatorio;
+    private String descricao;
 
     public JTextFieldBase(String mascara) {
         
@@ -42,14 +45,30 @@ public class JTextFieldBase extends JFormattedTextField {
             @Override
             public void focusLost(FocusEvent e) {
                 setBackground(Color.WHITE);
+                testaPreenchimento();
             }
             
         });
         
     }
-
+    
     public void setPermicao(boolean b){
         permicao = b;
+    }
+    
+    public void setObrigatoriedade(boolean b){
+        obrigatorio = b;
+    }
+    
+    public void setMenssagem(String s) {
+        descricao = s;
+    }
+    
+    private void testaPreenchimento() {
+        if (obrigatorio)
+            if (super.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo "+descricao+" é um campo obrigatório");
+            }
     }
     
     @Override
