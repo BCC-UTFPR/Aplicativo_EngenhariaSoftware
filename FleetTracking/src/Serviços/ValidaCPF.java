@@ -19,6 +19,11 @@ public class ValidaCPF{
 
     public boolean validar(String s) {
         
+        if (s.equals("999.999.999-99") || s.equals("   .   .   -  ")) {
+            return false;
+        }
+        
+        
         s_aux = s;
         s_aux = s_aux.replace(".", "");
         s_aux = s_aux.replace("-", "");

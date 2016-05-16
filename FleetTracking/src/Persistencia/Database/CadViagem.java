@@ -172,6 +172,17 @@ public class CadViagem implements Serializable, DAOInterface {
     public String getReferencia() {
         return "";
     }
+
+    @Override
+    public boolean validar() {
+    
+        if (finalizada) {
+            return (motorista.validar() && veiculo.validar() && (kmChegada > kmSaida));
+        }
+        
+        return (motorista.validar() && veiculo.validar());
+        
+    }
     
     
 }

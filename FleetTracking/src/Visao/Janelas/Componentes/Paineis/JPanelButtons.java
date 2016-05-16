@@ -114,29 +114,35 @@ public class JPanelButtons extends JPanelBase{
                 try {
                     panelClient.setInstanceObj();
                     obj = panelClient.getObjEntity();
+                    
+                    if (panelClient.objValido(obj)) {                        
+                        dao = new DAO();
 
-                    dao = new DAO();
-
-                    if (panelClient.getUpdate()) {
-                        int opcao = JOptionPane.showOptionDialog(panelClient, "Deseja realmente alterar o arquivo?",
-                        "Confirma Alteração", JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-                        null, new String[]{"Sim", "Nao"}, 1);
-                        if (opcao == 0) {
-                            try {
-                                dao.update(obj);
-                            } catch (Exception ex) {
-                                Logger.getLogger(JPanelButtons.class.getName()).log(Level.SEVERE, null, ex);
+                        if (panelClient.getUpdate()) {
+                            int opcao = JOptionPane.showOptionDialog(panelClient, "Deseja realmente alterar o arquivo?",
+                            "Confirma Alteração", JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                            null, new String[]{"Sim", "Nao"}, 1);
+                            if (opcao == 0) {
+                                try {
+                                    dao.update(obj);
+                                } catch (Exception ex) {
+                                    Logger.getLogger(JPanelButtons.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                             }
                         }
-                    }
-                    else {
-                        dao.insert(obj);
+                        else {
+                            dao.insert(obj);
+                        }
+
+                        limpar();
+
+                        panelClient.setUpdate(false);                    
+                        OrganizeScreen(btSave);
+                    } else {
+                        JOptionPane.showMessageDialog(panelClient, "Campos Obrigatórios não preenchidos! \n "
+                                + "Preencha todos os campo com * para salvar.");
                     }
 
-                    limpar();
-                    
-                    panelClient.setUpdate(false);                    
-                    OrganizeScreen(btSave);
                 } catch (Exception ex) {
                     Logger.getLogger(JPanelButtons.class.getName()).log(Level.SEVERE, null, ex);
                     System.out.println("Ocorreu um erro ao tentar salvar o registro.");

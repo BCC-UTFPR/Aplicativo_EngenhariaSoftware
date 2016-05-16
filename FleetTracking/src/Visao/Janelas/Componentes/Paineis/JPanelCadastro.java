@@ -5,7 +5,6 @@
  */
 package Visao.Janelas.Componentes.Paineis;
 
-import Visao.Janelas.Componentes.Paineis.JPanelBase;
 import java.awt.Color;
 import javax.swing.JLabel;
 
@@ -68,6 +67,7 @@ public abstract class JPanelCadastro extends JPanelBase {
     public abstract void getInstanceObj(Object objSelect);
     public abstract void setEditavel(boolean b);
     public abstract void limpar();
+    public abstract boolean objValido(Object obj);
 
     public void setUpdate(boolean b) {
         aUpdate = b;

@@ -45,7 +45,7 @@ public class JTextFieldBase extends JFormattedTextField {
             @Override
             public void focusLost(FocusEvent e) {
                 setBackground(Color.WHITE);
-                testaPreenchimento();
+                //testaPreenchimento();
             }
             
         });

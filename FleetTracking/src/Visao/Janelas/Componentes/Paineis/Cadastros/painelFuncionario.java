@@ -30,11 +30,11 @@ public class painelFuncionario extends JPanelCadastro {
     
     public painelFuncionario() throws ParseException  {
         
-        nome = new JLabelEditString("Nome:", 5, 35, 300, true);
-        numeroRegistro = new JLabelEditString("Número de Registro:", 325, 35, 300, true);
-        numeroRG = new JLabelEditString("RG:", 5, 75, 200, true);
-        numeroCPF = new JLabelEditCpf("CPF:", 215, 75, 200, true);
-        categoriaCNH = new JLabelEditString("CNH:", 425, 75, 200, true);
+        nome = new JLabelEditString("*Nome:", 5, 35, 300, true);
+        numeroRegistro = new JLabelEditString("*Número de Registro:", 325, 35, 300, true);
+        numeroRG = new JLabelEditString("*RG:", 5, 75, 200, true);
+        numeroCPF = new JLabelEditCpf("*CPF:", 215, 75, 200, true);
+        categoriaCNH = new JLabelEditString("*CNH:", 425, 75, 200, true);
         comentarios = new JLabelEditTextArea("Comentários adicionais:", 5, 115, 620, false);
         
         this.add(nome);
@@ -104,4 +104,13 @@ public class painelFuncionario extends JPanelCadastro {
     
     @Override
     public void limpar(){}
+
+    @Override
+    public boolean objValido(Object obj) {
+    
+        CadFuncionario f = (CadFuncionario) obj;
+        
+        return f.validar();
+        
+    }
 }

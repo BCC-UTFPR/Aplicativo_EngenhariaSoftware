@@ -16,5 +16,6 @@ public interface DAOInterface {
     public Object[] toArray();
     public int[] getDefineRenderersColumn();
     public String getReferencia();
+    public boolean validar();
     
 }

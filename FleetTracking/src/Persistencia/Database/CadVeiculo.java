@@ -154,4 +154,9 @@ public class CadVeiculo implements Serializable, DAOInterface {
     public String getReferencia() {
         return this.getPlaca();
     }
+
+    @Override
+    public boolean validar() {
+        return (!renavam.isEmpty() && !placa.isEmpty() && !modelo.isEmpty() && !marca.isEmpty() && (ano != 0) && !categoriaCNH.isEmpty());
+    }
 }

@@ -12,6 +12,7 @@ import Visao.Janelas.Componentes.Campos.JLabelEditString;
 import Visao.Janelas.Componentes.Campos.JLabelEditTextArea;
 import Visao.Janelas.Componentes.Paineis.JPanelCadastro;
 import java.text.ParseException;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -35,12 +36,12 @@ public class painelVeiculo extends JPanelCadastro {
 
      public painelVeiculo() throws ParseException  {
         
-        marca = new JLabelEditString("Marca:", 5, 35, 300, true);
-        modelo = new JLabelEditString("Modelo:", 315, 35, 300, true);
-        renavam = new JLabelEditRenavam("Numero do Renavam:", 5, 75, 140, true);
-        placa = new JLabelEditPlaca("Número da Placa:", 155, 75, 140, true);
-        categoriaCNH = new JLabelEditString("CNH:", 305, 75, 140, true);
-        ano = new JLabelEditInteger("Ano:", 455, 75, 75, true, "####", true);
+        marca = new JLabelEditString("*Marca:", 5, 35, 300, true);
+        modelo = new JLabelEditString("*Modelo:", 315, 35, 300, true);
+        renavam = new JLabelEditRenavam("*Numero do Renavam:", 5, 75, 140, true);
+        placa = new JLabelEditPlaca("*Placa:", 155, 75, 140, true);
+        categoriaCNH = new JLabelEditString("*CNH:", 305, 75, 140, true);
+        ano = new JLabelEditInteger("*Ano:", 455, 75, 75, true, "####", true);
         quilometragem = new JLabelEditInteger("Km:", 540, 75, 75, false, "", true);
         comentarios = new JLabelEditTextArea("Comentários adicionais:", 5, 115, 610, false);
         conservacao = new JLabelEditTextArea("Estado de Concervação:", 5, 255, 610, false);
@@ -68,7 +69,11 @@ public class painelVeiculo extends JPanelCadastro {
         if (this.getUpdate()){
             cc.setId(Long.parseLong(super.getId()));
         }
-        cc.setAno(Integer.parseInt(ano.getText()));
+        try {
+            cc.setAno(Integer.parseInt(ano.getText()));
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(this, "Campo Ano preenchido incorretamente! (Ex.: 1994)");
+        }
         cc.setMarca(marca.getText());
         cc.setModelo(modelo.getText());
         cc.setRenavam(renavam.getText());
@@ -76,7 +81,11 @@ public class painelVeiculo extends JPanelCadastro {
         cc.setCategoriaCNH(categoriaCNH.getText());
         cc.setComentarios(comentarios.getText());
         cc.setConservacao(conservacao.getText());
-        cc.setQuilometragem(Double.parseDouble(quilometragem.getText()));
+        try {
+            cc.setQuilometragem(Double.parseDouble(quilometragem.getText()));
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(this, "Campo Km preenchido incorretamente! (Ex.: 25450.8)");
+        }
         
         super.setObjEntity(cc);
         
@@ -141,5 +150,14 @@ public class painelVeiculo extends JPanelCadastro {
 
     @Override
     public void limpar() {}
+
+    @Override
+    public boolean objValido(Object obj) {
+        
+        CadVeiculo v = (CadVeiculo) obj;
+        
+        return v.validar();
+        
+    }
     
 }

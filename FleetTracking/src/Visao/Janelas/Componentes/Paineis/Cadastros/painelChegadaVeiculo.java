@@ -44,7 +44,7 @@ public class painelChegadaVeiculo extends JPanelCadastro {
         
         motorista = new JLabelEditStringComConsulta("Motorista Responsável:", 5, 35, 600, "CadFuncionario", "registro", true);
         veiculo = new JLabelEditStringComConsulta("Veículo:", 5, 75, 500, "CadVeiculo", "placa", true);
-        quilometragem = new JLabelEditInteger("Km:", 515, 75, 75, false, "", true);
+        quilometragem = new JLabelEditInteger("*Km:", 515, 75, 75, false, "", true);
         conservacao = new JLabelEditTextArea("Estado de Concervação:", 5, 115, 610, false);
         
         this.add(motorista);
@@ -53,10 +53,9 @@ public class painelChegadaVeiculo extends JPanelCadastro {
         this.add(conservacao);
         
         setSize(500, 340);
-        super.setClassEntity("CadViagem");
+        super.setClassEntity("CadViagem where STATUS=false");
         super.setPesquisa(pesquisa);
         
-        actionSelected();
     }
 
     @Override
@@ -68,17 +67,20 @@ public class painelChegadaVeiculo extends JPanelCadastro {
         if (this.getUpdate()){
             cc.setId(Long.parseLong(super.getId()));
         }
-        cc.setDataChegada(getDataSistema());
-        cc.setMotorista(f);
-        cc.setVeiculo(v);
-        cc.setRelatorioDanos(conservacao.getText());
-        cc.setKmChegada(getQuilometragem(v));
         cc.setFinalizada(true);
-        
-        v.setConservacao(v.getConservacao()+"\n"+conservacao.getText());
-        
-        super.setObjEntity(v);
-        super.setObjEntity(cc);
+        if (getQuilometragem(v)) {
+            cc.setDataChegada(getDataSistema());
+            cc.setMotorista(f);
+            cc.setVeiculo(v);
+            cc.setRelatorioDanos(conservacao.getText());
+            cc.setKmChegada(Double.parseDouble(quilometragem.getText()));
+
+            v.setQuilometragem(Double.parseDouble(quilometragem.getText()));
+            v.setConservacao(v.getConservacao()+"\n"+conservacao.getText());
+
+            super.setObjEntity(v);
+            super.setObjEntity(cc);
+        }
     }
 
     @Override
@@ -89,26 +91,17 @@ public class painelChegadaVeiculo extends JPanelCadastro {
         
         this.setMotorista(obj.getMotorista());
         this.setVeiculo(obj.getVeiculo());
+        this.setQuilometragem(obj.getKmChegada());
+        this.setConservacao(obj.getRelatorioDanos());
+        
     }
-    
-    private void actionSelected() {
-        try {
-            if (dao == null){
-                dao = new DAO();
-            }
 
-            String hqlQuery = "from CadViagem where STATUS=false";
+    public void setQuilometragem(Double quilometragem) {
+        this.quilometragem.setText(""+ quilometragem);
+    }
 
-            List l = dao.select(hqlQuery);
-
-            FormConsultaPadrao fcp = new FormConsultaPadrao("Consulta", l, "CadViagem", pesquisa);
-            fcp.setModal(true);
-            fcp.setVisible(true);
-            getInstanceObj(fcp.getReferencia());
-
-        } catch (Exception ex) {
-            Logger.getLogger(JLabelEdit.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public void setConservacao(String conservacao) {
+        this.conservacao.setText(conservacao);
     }
 
     public void setMotorista(CadFuncionario motorista) {
@@ -119,16 +112,16 @@ public class painelChegadaVeiculo extends JPanelCadastro {
         this.veiculo.setReferancia(veiculo);
     }
     
-    public double getQuilometragem(CadVeiculo v) {
+    public boolean getQuilometragem(CadVeiculo v) {
         double d = Double.parseDouble(quilometragem.getText());
         
         if (d <= v.getQuilometragem()) {
             JOptionPane.showMessageDialog(this, "A quilometragem é invalida \n"
                     + "Por favor corrija!");
+            return false;
         } else {
-            v.setQuilometragem(Double.parseDouble(quilometragem.getText()));
-        }
-        return d;        
+            return true;
+        }        
     }
 
     public Date getDataSistema() {
@@ -149,5 +142,12 @@ public class painelChegadaVeiculo extends JPanelCadastro {
 
     @Override
     public void limpar() {}
+
+    @Override
+    public boolean objValido(Object obj) {
+        CadViagem v = (CadViagem) obj;
+        
+        return v.validar();
+    }
     
 }

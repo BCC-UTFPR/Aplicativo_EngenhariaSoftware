@@ -122,4 +122,9 @@ public class CadFuncionario implements Serializable, DAOInterface {
     public String getReferencia() {
         return this.getNome();
     }
+
+    @Override
+    public boolean validar() {
+        return (!nome.isEmpty() && !registro.isEmpty() && !cpf.isEmpty() && !rg.isEmpty() && !cnh.isEmpty());
+    }
 }
