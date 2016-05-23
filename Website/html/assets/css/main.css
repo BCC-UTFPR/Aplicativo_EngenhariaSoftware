@@ -1059,6 +1059,12 @@
 			width: 18em;
 		}
 
+		#signup-form > a {
+			color:#fff;
+			color: red;
+			font-weight: bold;
+		}
+
 		#signup-form > * {
 			margin: 0 0 0 1em;
 		}
@@ -1076,12 +1082,6 @@
 				flex-direction: column;
 			}
 
-				#signup-form input[type="type"],
-				#signup-form input[type="password"],
-				#signup-form input[type="email"] {
-					width: 100%;
-				}
-
 				#signup-form > * {
 					margin: 1.25em 0 0 0;
 				}
@@ -1091,7 +1091,6 @@
 					font-size: 0.9em;
 					height: 1em;
 					left: 0;
-					line-height: inherit;
 					margin-top: 0;
 					position: absolute;
 				}

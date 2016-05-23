@@ -1,11 +1,11 @@
 <?php 
 
 /* Informações do Banco de Dados*/
-$host = "";
-$username = "";
-$password = "";
-$database = "";
-$table = "";
+$host = "localhost";
+$username = "fronche2_admin";
+$password = "adminadmin";
+$database = "fronche2_engsoftware";
+$table = "Funcionario";
 
 /* Autenticação */
 mysql_connect("$host","$username","$password") or die ("Impossível conectar!");
@@ -19,8 +19,9 @@ $field_password = stripslashes($field_password);
 $field_username = mysql_real_escape_string($field_username);
 $field_password = mysql_real_escape_string($field_password);
 
-$mysql_code = "SELECT * FROM $table WHERE username = '$field_username' AND password = '$field_password'";
+$mysql_code = "SELECT * FROM $table WHERE ID_Funcionario = '$field_username' AND Senha = '$field_password'";
 $query = mysql_query($mysql_code);
+
  
 $number_of_results = mysql_num_rows($query);
 
