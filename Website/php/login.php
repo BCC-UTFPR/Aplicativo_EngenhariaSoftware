@@ -28,7 +28,8 @@ $number_of_results = mysql_num_rows($query);
 if ($number_of_results > 0) {
 		session_register("field_username");
 		session_register("field_password");
-		header("location:login_success.php");
+		//header("location:login_success.php");
+		echo "LOGOU PORRA!";
 }
 
 else {

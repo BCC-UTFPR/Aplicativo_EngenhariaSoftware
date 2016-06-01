@@ -44,31 +44,14 @@
           <div class="form-group row">
             <label for="inputDescricao" class="col-sm-2">Descrição</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputDescricao" placeholder="Descrição do gasto">
+              <input type="text" name="descricao" class="form-control" id="inputDescricao" placeholder="Descrição do gasto">
             </div>
           </div>
           <br>
           <div class="form-group row">
-            <label class="col-sm-2">Tipo do gasto</label>
+            <label for="inputTipo" class="col-sm-2">Tipo</label>
             <div class="col-sm-10">
-              <div class="radio">
-                <label>
-                  <input type="radio" name="gridRadios" id="gridRadios1" value="option1">
-                  Tipo 1
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="gridRadios" id="gridRadios2" value="option2"> 
-                  TIpo 2
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="gridRadios" id="gridRadios3" value="option3">
-                  Tipo 3
-                </label>
-              </div>
+              <input type="text" name="tipo" class="form-control" id="inputDescricao" placeholder="Tipo do gasto">
             </div>
           </div>
           <br>
@@ -77,7 +60,7 @@
             <div class="col-sm-10">
               <div class="input-group">
                 <div class="input-group-addon">$  </div>
-                <input type="text" class="form-control" id="inputValor" placeholder="Valor">
+                <input type="text" name="valor" class="form-control" id="inputValor" placeholder="Valor">
                 <div class="input-group-addon">.00</div>
               </div>
             </div>
@@ -87,7 +70,7 @@
             <label for="inputImage" class="col-sm-2">Carregar imagem</label>
             <div class="col-sm-10">
               <label class="file">
-                <input type="file" id="file">
+                <input type="file" name="upload_image" id="file">
                 <span class="file-custom"></span>
               </label>
             </div>
@@ -95,7 +78,7 @@
           <br>
           <div class="form-group row">
             <div class="col-sm-offset-2 col-sm-10">
-              <center><button type="button" class="btn btn-primary">Finalizar</button></center>
+              <center><button action="./php/inserir_valores.php" type="button" class="btn btn-primary">Finalizar</button></center>
             </div>
           </div>
         </form>
