@@ -16,14 +16,25 @@
     <div class="container">
       <form class="form-signin" method="POST" action="login.php">
       <center>
-      	<h2 class="form-signin-heading">Login</h2>
-      </center>        
+        <img alt="Logomarca" src="logomarca.png" height="170" width="230">
+      </center>  
+      	<div class="input-group">
         <label for="field_username" class="sr-only">email</label>
+          <span class="input-group-addon glyphicon glyphicon-user" id="sizing-addon1"></span>
+
         <input type="text" name="field_username" id="field_username" class="form-control" placeholder="Email" required autofocus>
+        </div>	
+
+      	<div class="input-group">
         <label for="field_password" class="sr-only">senha</label>
+          <span class="input-group-addon glyphicon glyphicon-asterisk" id="sizing-addon1"></span>
         <input type="password" name="field_password" id="field_password" class="form-control" placeholder="Senha" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-        
+        </div>	
+
+      	<div class="button-group">
+        <button class="btn btn-lg btn-primary btn-block" type="submit" style="  padding-top: 7px;">Entrar</button>
+         </div>	
+
          <?php if ($_GET["loginFail"]) echo '<div class="alert alert-danger" role="alert" style="margin: 5 auto;">Login incorreto. Tente novamente!</div>
 ' 
   	?>

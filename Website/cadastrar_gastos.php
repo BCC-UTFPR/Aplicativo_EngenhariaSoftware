@@ -22,31 +22,29 @@ if (empty($_POST['field_tipo']) || empty($_POST['field_descricao']) || empty($_P
 }
 
 else {
-	echo $field_viagem;
 	$field_descricao = mysql_real_escape_string($field_descricao);
 	$field_tipo = mysql_real_escape_string($field_tipo);
 	$field_valor = mysql_real_escape_string($field_valor);
 	
+	/*
+	$imagem_nome =$_FILES['field_imagem']['name']; 
+	$imagem_content = addslashes(file_get_contents($_FILES['field_imagem']['tmp_name']));
+	*/
 	
-	//$imagem_nome =$_FILES['field_imagem']['name']; 
-	//$imagem_content = addslashes(file_get_contents($_FILES['field_imagem']['tmp_name']));
-	
-	
+	list($field_id_viagem,$field_id_funcionario,$field_id_veiculo) = explode("/", $field_viagem);
+	list($string_id_viagem,$id_viagem) = explode (":", $field_id_viagem);
+	list($string_id_funcionario,$id_funcionario) = explode (":", $field_id_funcionario);
+	list($string_id_funcionario,$id_veiculo) = explode (":", $field_id_veiculo);
+
 	
 	$mysql_code = "INSERT INTO $table (Imagem_Content, Imagem_Nome, DescricaoGastos, TipoGasto, ValorGasto, Viagem_ID_Viagem, Viagem_Funcionario_ID_Funcionario,Viagem_Veiculo_ID_Veiculo) 
-	VALUES ('$imagem_content','$imagem_nome','$field_descricao', '$field_tipo', '$field_valor', 1, 1, 1)";
+	VALUES ('$imagem_content','$imagem_nome','$field_descricao', '$field_tipo', '$field_valor', $id_viagem, $id_funcionario, $id_veiculo)";
 	
 	$query = mysql_query($mysql_code);
 	
 	if($query){
 		header("location:homepage.php?insertSuccess=true");
-	
-	/*
-		$sql = "SELECT Imagem FROM $table WHERE Imagem_Nome = $imagem_nome";
-		$query = mysql_query($sql);
-		$result = mysql_fetch_array($query);
-		echo '<img src="data:image/png;base64,'.base64_encode( $result['image'] ).'"/>';
-	*/
+
 	} 
 	
 	else {
