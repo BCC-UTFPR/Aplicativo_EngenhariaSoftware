@@ -16,9 +16,14 @@ mysql_select_db("$database") or die ("Database inválida. Tente novamente.");
 $descricao = mysqli_real_escape_string($link, $_POST['descricao_gasto']);
 $tipo = mysqli_real_escape_string($link, $_POST['tipo_gasto']);
 $valor = mysqli_real_escape_string($link, $_POST['valor_gasto']);
- 
+
+/* Inserindo imagem */
+$upload_image=$_FILES[" myimage "][ "name" ];
+$folder="/fotos";
+move_uploaded_file($_FILES[" myimage "][" tmp_name "], "$folder".$_FILES[" myimage "][" name "]);
+
 /* Execução do SQL */
-$query = "INSERT INTO '$table' (DescricaoGastos, TipoGasto, ValorGasto) VALUES ('$descricao', '$tipo', '$valor')";
+$query = "INSERT INTO '$table' (DescricaoGastos, TipoGasto, ValorGasto) VALUES ('$descricao', '$tipo', '$valor', '$upload_image')";
 
 if(mysqli_query($link, $query)){
     echo "Valores adicionados com sucesso.";
