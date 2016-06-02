@@ -26,10 +26,8 @@ else {
 	$field_tipo = mysql_real_escape_string($field_tipo);
 	$field_valor = mysql_real_escape_string($field_valor);
 	
-	/*
 	$imagem_nome =$_FILES['field_imagem']['name']; 
 	$imagem_content = addslashes(file_get_contents($_FILES['field_imagem']['tmp_name']));
-	*/
 	
 	list($field_id_viagem,$field_id_funcionario,$field_id_veiculo) = explode("/", $field_viagem);
 	list($string_id_viagem,$id_viagem) = explode (":", $field_id_viagem);
