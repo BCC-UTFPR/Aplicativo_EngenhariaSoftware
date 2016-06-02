@@ -80,7 +80,11 @@ if ( !isset($_SESSION['username']) and !isset($_SESSION['password']) ) {
    		   <input type="text" class="form-control" name="field_tipo"id="field_tipo" aria-describedby="basic-addon-three" required
                 data-fv-notempty-message="(Campo Vazio)">
 	</div>
-
+	<div class="input-group">
+  		<span class="input-group-addon" id="basic-addon">Descrição:</span>
+	        <input type="text" class="form-control" name="field_descricao" id="field_descricao" aria-describedby="basic-addon" required
+                data-fv-notempty-message="(Campo Vazio)">
+	</div>
 	<div class="input-group">
 	  	<span class="input-group-addon" id="basic-addon-two">Valor:</span>
      		 <input type="number" min="0" step="0.10" placeholder="0,0" class="form-control" name="field_valor" id="field_valor" aria-describedby="basic-addon-two" required
