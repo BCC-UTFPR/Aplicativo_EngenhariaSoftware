@@ -1,15 +1,15 @@
 <?php
 session_start();
- 
+
 if ( !isset($_SESSION['username']) and !isset($_SESSION['password']) ) {
     session_destroy();
- 
+
     unset ($_SESSION['username']);
     unset ($_SESSION['password']);
-     
+
     header('location:index.php');
 }
-?> 
+?>
 
 <html>
   <head>
@@ -28,14 +28,14 @@ if ( !isset($_SESSION['username']) and !isset($_SESSION['password']) ) {
   <body>
 
     <nav class="navbar navbar-fixed-top navbar-default ">
-   
+
       <a class="navbar-brand" >Steinmacher Transportes</a>
       <ul class="nav navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="homepage.php">Área de Cadastro</a>
         </li>
       </ul>
-     </ul> 
+     </ul>
     </nav>
 
     <div class="container">
@@ -47,7 +47,7 @@ if ( !isset($_SESSION['username']) and !isset($_SESSION['password']) ) {
          <?php if ($_GET["insertFailed"]) echo '<div class="alert alert-danger" role="alert" style="margin: 5 auto;">Submissão falhou! Impossível processar, tente novamente.</div>' ?>
          <?php if ($_GET["insertEmpty"]) echo '<div class="alert alert-danger" role="alert" style="margin: 5 auto;">Submissão falhou! Preencha todos os campos.</div>' ?>
 	</div>
-	
+
 	<div class="input-group">
 		<div class="form-group">
 		  <label for="viagem_list">Selecione a viagem e preencha o formulário a seguir:</label>
@@ -59,50 +59,44 @@ if ( !isset($_SESSION['username']) and !isset($_SESSION['password']) ) {
 			$password = "adminadmin";
 			$database = "fronche2_engsoftware";
 			$table = "Gastos";
-			
+
 			/* Autenticação */
 			$conn = mysql_connect("$host","$username","$password") or die ("Impossível conectar!");
-			mysql_select_db("$database") or die ("Database inválida. Tente novamente.");		
-				
+			mysql_select_db("$database") or die ("Database inválida. Tente novamente.");
+
 			$sql = "SELECT ID_Viagem,Funcionario_ID_Funcionario,Veiculo_ID_Veiculo FROM Viagem";
 			$result = mysql_query($sql);
-			
+
 			while ($row = mysql_fetch_array($result)) {
 			    echo "<option>ID Viagem:" . $row['ID_Viagem']. " / ID Funcionário: " .$row['Funcionario_ID_Funcionario']. " / ID Veículo: " .$row['Veiculo_ID_Veiculo']. "</option>";
-			}		
+			}
 			?>
 		  </select>
 		</div>
-	</div>	
+	</div>
 
 	<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon-three">Tipo:</span>
    		   <input type="text" class="form-control" name="field_tipo"id="field_tipo" aria-describedby="basic-addon-three" required
                 data-fv-notempty-message="(Campo Vazio)">
 	</div>
-	
-	<div class="input-group">
-  		<span class="input-group-addon" id="basic-addon">Descrição:</span>
-	        <input type="text" class="form-control" name="field_descricao" id="field_descricao" aria-describedby="basic-addon" required
-                data-fv-notempty-message="(Campo Vazio)">
-	</div>
-	
-	
+
 	<div class="input-group">
 	  	<span class="input-group-addon" id="basic-addon-two">Valor:</span>
      		 <input type="number" min="0" step="0.10" placeholder="0,0" class="form-control" name="field_valor" id="field_valor" aria-describedby="basic-addon-two" required
                 data-fv-notempty-message="(Campo Vazio)">
-                  <span class="input-group-addon">R$</span>	 
+                  <span class="input-group-addon">R$</span>
 	</div>
 
  	<div class="input-group">
     		  <input type="file" name="field_imagem" required
                 data-fv-notempty-message="(Campo Vazio)">
-	</div>     
+	</div>
+
    	<div class="button-group">
      	 	<button class="btn btn-md btn-success btn-block " type="submit">Cadastrar</button>
-	</div>   
-	
+	</div>
+
 	<div class="sair-div" style="margin-top:15px;">
 	<center><a class="sair glyphicon glyphicon-share-alt" name="sair" href="logout.php"> Sair</a></center>
 	</div>
