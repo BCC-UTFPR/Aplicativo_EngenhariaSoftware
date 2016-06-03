@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -27,12 +28,10 @@ public class CadViagem implements Serializable, DAOInterface {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     @OneToOne
-    @PrimaryKeyJoinColumn(name = "ID")
-//    @Column(name="FUNCIONARIO_ID")
+    @JoinColumn(name="ID_FUNCIONARIO", referencedColumnName = "ID")
     private CadFuncionario motorista;
     @OneToOne
-    @PrimaryKeyJoinColumn(name = "ID")
-//    @Column (name="VEICULO_ID")
+    @JoinColumn(name="ID_VEICULO", referencedColumnName = "ID")
     private CadVeiculo veiculo;
     @Temporal(javax.persistence.TemporalType.DATE)
     @Column(name = "DATA_CHEGADA")

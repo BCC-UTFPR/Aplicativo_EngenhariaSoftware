@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/MATHEUS-NOTE/Dropbox/Facudade/Materias/Engenharia%20de%20Software%20I/Trabalhos/Aplicativo_EngenhariaSoftware/FleetTracking/src/META-INF/persistence.xml</file>
+            <file>file:/C:/Users/MATHEUS-NOTE/Dropbox/Facudade/Materias/Engenharia%20de%20Software%20I/Trabalhos/Aplicativo_EngenhariaSoftware/FleetTracking/src/Persistencia/Database/CadVeiculo.java</file>
+            <file>file:/C:/Users/MATHEUS-NOTE/Dropbox/Facudade/Materias/Engenharia%20de%20Software%20I/Trabalhos/Aplicativo_EngenhariaSoftware/FleetTracking/src/Persistencia/Database/CadFuncionario.java</file>
+            <file>file:/C:/Users/MATHEUS-NOTE/Dropbox/Facudade/Materias/Engenharia%20de%20Software%20I/Trabalhos/Aplicativo_EngenhariaSoftware/FleetTracking/src/Persistencia/Database/CadViagem.java</file>
+            <file>file:/C:/Users/MATHEUS-NOTE/Dropbox/Facudade/Materias/Engenharia%20de%20Software%20I/Trabalhos/Aplicativo_EngenhariaSoftware/FleetTracking/src/Persistencia/Database/CadGastos.java</file>
+        </group>
     </open-files>
 </project-private>
