@@ -27,10 +27,10 @@ public class CadViagem implements Serializable, DAOInterface {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     @OneToOne
-    @PrimaryKeyJoinColumn
+    @PrimaryKeyJoinColumn(name = "FUNCIONARIO_ID")
     private CadFuncionario motorista;
     @OneToOne
-    @PrimaryKeyJoinColumn
+    @PrimaryKeyJoinColumn(name = "VEICULO_ID")
     private CadVeiculo veiculo;
     @Temporal(javax.persistence.TemporalType.DATE)
     @Column(name = "DATA_CHEGADA")
