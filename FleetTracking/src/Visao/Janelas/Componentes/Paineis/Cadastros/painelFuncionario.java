@@ -63,7 +63,7 @@ public class painelFuncionario extends JPanelCadastro {
         cc.setCpf(numeroCPF.getText());
         cc.setCnh(categoriaCNH.getText());
         cc.setComentarios(comentarios.getText());
-        cc.setSenha(nome.getText().split(" ")[0]+numeroCPF.getText().split(".")[2]);
+        cc.setSenha("mudar123");
         super.setObjEntity(cc);     
         
     }
