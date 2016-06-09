@@ -78,6 +78,7 @@ public class painelFuncionario extends JPanelCadastro {
         this.setNumeroCPF(dao.getCpf());
         this.setNumeroRG(dao.getRg());
         this.setCategoriaCNH(dao.getCnh());
+        this.setComentario(dao.getComentarios());
     }
 
     public void setNome(String text) {
@@ -113,5 +114,9 @@ public class painelFuncionario extends JPanelCadastro {
         
         return f.validar();
         
+    }
+
+    private void setComentario(String comentarios) {
+        this.categoriaCNH.setText(comentarios);
     }
 }
