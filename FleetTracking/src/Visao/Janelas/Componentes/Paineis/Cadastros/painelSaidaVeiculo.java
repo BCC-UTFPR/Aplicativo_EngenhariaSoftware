@@ -31,8 +31,8 @@ public class painelSaidaVeiculo extends JPanelCadastro {
     
      public painelSaidaVeiculo() throws ParseException  {
         
-        motorista = new JLabelEditStringComConsulta("*Motorista Responsável:", 5, 35, 600, "CadFuncionario", "registro", true);
-        veiculo = new JLabelEditStringComConsulta("*Veículo:", 5, 75, 600, "CadVeiculo", "placa", true);
+        motorista = new JLabelEditStringComConsulta("*Motorista Responsável:", 5, 35, 600, "CadFuncionario where AUSENTE=false", "registro", true);
+        veiculo = new JLabelEditStringComConsulta("*Veículo:", 5, 75, 600, "CadVeiculo where AUSENTE=false", "placa", true);
         
         this.add(motorista);
         this.add(veiculo);
@@ -62,7 +62,12 @@ public class painelSaidaVeiculo extends JPanelCadastro {
         }
         cc.setFinalizada(false);
         
+        v.setAusente(true);
+        f.setAusente(true);
+        
         super.setObjEntity(cc);
+        super.setObjEntity(v);
+        super.setObjEntity(f);
     }
 
     @Override

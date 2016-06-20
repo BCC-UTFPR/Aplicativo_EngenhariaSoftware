@@ -40,10 +40,13 @@ public class CadVeiculo implements Serializable, DAOInterface {
     private String conservacao;
     @Column(name = "COMENTARIOS")
     private String comentarios;
+    @Column(name = "AUSENTE")
+    private boolean ausente;
 
     public CadVeiculo() {}
 
-    public CadVeiculo(int ano, double quilometragem, String placa, String marca, String modelo, String categoriaCNH, String renavam, String conservacao, String comentarios) {
+    public CadVeiculo(Long id, int ano, double quilometragem, String placa, String marca, String modelo, String categoriaCNH, String renavam, String conservacao, String comentarios, boolean ausente) {
+        this.id = id;
         this.ano = ano;
         this.quilometragem = quilometragem;
         this.placa = placa;
@@ -53,7 +56,16 @@ public class CadVeiculo implements Serializable, DAOInterface {
         this.renavam = renavam;
         this.conservacao = conservacao;
         this.comentarios = comentarios;
+        this.ausente = ausente;
     }
+
+    public boolean isAusente() {
+        return ausente;
+    }
+
+    public void setAusente(boolean ausente) {
+        this.ausente = ausente;
+    } 
 
     public int getAno() {
         return ano;

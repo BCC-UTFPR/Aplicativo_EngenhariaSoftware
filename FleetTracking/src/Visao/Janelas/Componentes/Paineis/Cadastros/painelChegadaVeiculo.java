@@ -9,18 +9,14 @@ import Persistencia.DAO;
 import Persistencia.Database.CadFuncionario;
 import Persistencia.Database.CadVeiculo;
 import Persistencia.Database.CadViagem;
-import Visao.Janelas.Componentes.Campos.JLabelEdit;
 import Visao.Janelas.Componentes.Campos.JLabelEditInteger;
 import Visao.Janelas.Componentes.Campos.JLabelEditStringComConsulta;
 import Visao.Janelas.Componentes.Campos.JLabelEditTextArea;
-import Visao.Janelas.Componentes.FormConsultaPadrao;
 import Visao.Janelas.Componentes.Paineis.JPanelCadastro;
-import java.awt.event.FocusListener;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -42,8 +38,8 @@ public class painelChegadaVeiculo extends JPanelCadastro {
 
     public painelChegadaVeiculo() throws ParseException  {
         
-        motorista = new JLabelEditStringComConsulta("Motorista Responsável:", 5, 35, 600, "CadFuncionario", "registro", true);
-        veiculo = new JLabelEditStringComConsulta("Veículo:", 5, 75, 500, "CadVeiculo", "placa", true);
+        motorista = new JLabelEditStringComConsulta("Motorista Responsável:", 5, 35, 600, "CadFuncionario where AUSENTE=false", "registro", true);
+        veiculo = new JLabelEditStringComConsulta("Veículo:", 5, 75, 500, "CadVeiculo where AUSENTE=false", "placa", true);
         quilometragem = new JLabelEditInteger("*Km:", 515, 75, 75, false, "", true);
         conservacao = new JLabelEditTextArea("Estado de Concervação:", 5, 115, 610, false);
         
@@ -77,8 +73,13 @@ public class painelChegadaVeiculo extends JPanelCadastro {
 
             v.setQuilometragem(Double.parseDouble(quilometragem.getText()));
             v.setConservacao(v.getConservacao()+"\n"+conservacao.getText());
+            v.setAusente(false);
+            
+            f.setAusente(false);
+
 
             super.setObjEntity(v);
+            super.setObjEntity(f);
             super.setObjEntity(cc);
         }
     }

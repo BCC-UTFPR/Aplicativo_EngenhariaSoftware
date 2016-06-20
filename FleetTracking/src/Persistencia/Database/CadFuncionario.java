@@ -34,21 +34,36 @@ public class CadFuncionario implements Serializable, DAOInterface {
     private String cnh;
     @Column(name = "COMENTARIOS")
     private String comentarios;
+    @Column(name = "ADMINISTRADOR")
+    private boolean adm;
+    @Column(name = "AUSENTE")
+    private boolean ausente;
     @Column(name = "SENHA")
     private String senha;
 
     public CadFuncionario() {
     }
 
-    public CadFuncionario(String nome, String registro, String cpf, String rg, String cnh, String comentarios, String senha) {
+    public CadFuncionario(Long id, String nome, String registro, String cpf, String rg, String cnh, String comentarios, boolean adm, boolean ausente, String senha) {
+        this.id = id;
         this.nome = nome;
         this.registro = registro;
         this.cpf = cpf;
         this.rg = rg;
         this.cnh = cnh;
         this.comentarios = comentarios;
+        this.adm = adm;
+        this.ausente = ausente;
         this.senha = senha;
     }
+
+    public boolean isAusente() {
+        return ausente;
+    }
+
+    public void setAusente(boolean ausente) {
+        this.ausente = ausente;
+    } 
 
     public String getSenha() {
         return senha;
@@ -104,6 +119,14 @@ public class CadFuncionario implements Serializable, DAOInterface {
 
     public void setComentarios(String comentarios) {
         this.comentarios = comentarios;
+    }
+
+    public boolean getAdm() {
+        return adm;
+    }
+
+    public void setAdm(boolean adm) {
+        this.adm = adm;
     }
 
     public void setId(Long id) {

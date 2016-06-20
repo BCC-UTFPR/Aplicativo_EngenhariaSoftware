@@ -81,6 +81,7 @@ public class painelVeiculo extends JPanelCadastro {
         cc.setCategoriaCNH(categoriaCNH.getText());
         cc.setComentarios(comentarios.getText());
         cc.setConservacao(conservacao.getText());
+        cc.setAusente(false);
         try {
             cc.setQuilometragem(Double.parseDouble(quilometragem.getText()));
         } catch (Exception e) {

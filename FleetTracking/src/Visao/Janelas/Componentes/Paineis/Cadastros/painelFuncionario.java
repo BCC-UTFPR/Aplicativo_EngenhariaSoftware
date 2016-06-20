@@ -10,7 +10,9 @@ import Visao.Janelas.Componentes.Campos.JLabelEditCpf;
 import Visao.Janelas.Componentes.Campos.JLabelEditString;
 import Visao.Janelas.Componentes.Campos.JLabelEditTextArea;
 import Visao.Janelas.Componentes.Paineis.JPanelCadastro;
+import java.awt.Color;
 import java.text.ParseException;
+import javax.swing.JCheckBox;
 
 /**
  *
@@ -24,6 +26,7 @@ public class painelFuncionario extends JPanelCadastro {
     private JLabelEditCpf numeroCPF;
     private JLabelEditString categoriaCNH;
     private JLabelEditTextArea comentarios;
+    private JCheckBox admistrador;
     
     private CadFuncionario dao;
     private String pesquisa = "nome";
@@ -36,6 +39,10 @@ public class painelFuncionario extends JPanelCadastro {
         numeroCPF = new JLabelEditCpf("*CPF:", 215, 75, 200, true);
         categoriaCNH = new JLabelEditString("*CNH:", 425, 75, 200, true);
         comentarios = new JLabelEditTextArea("Comentários adicionais:", 5, 115, 620, false);
+        admistrador = new JCheckBox("Administrador");
+        admistrador.setLayout(null);
+        admistrador.setBounds(50, 10, 150, 30);
+        admistrador.setBackground(this.getBackground());
         
         this.add(nome);
         this.add(numeroRegistro);
@@ -43,6 +50,7 @@ public class painelFuncionario extends JPanelCadastro {
         this.add(numeroCPF);
         this.add(categoriaCNH);
         this.add(comentarios);
+        this.add(admistrador);
         
         setSize(500, 400);
         super.setClassEntity("CadFuncionario");
@@ -63,6 +71,9 @@ public class painelFuncionario extends JPanelCadastro {
         cc.setCpf(numeroCPF.getText());
         cc.setCnh(categoriaCNH.getText());
         cc.setComentarios(comentarios.getText());
+        cc.setSenha(nome.getText().split(" ")[0]+numeroCPF.getText().split(".")[2]);
+        cc.setAdm(admistrador.isSelected());
+        cc.setAusente(false);
         cc.setSenha("mudar123");
         super.setObjEntity(cc);     
         
@@ -78,6 +89,7 @@ public class painelFuncionario extends JPanelCadastro {
         this.setNumeroCPF(dao.getCpf());
         this.setNumeroRG(dao.getRg());
         this.setCategoriaCNH(dao.getCnh());
+        this.setAdm(dao.getAdm());
         this.setComentario(dao.getComentarios());
     }
 
@@ -101,11 +113,21 @@ public class painelFuncionario extends JPanelCadastro {
         this.categoriaCNH.setText(text);
     }
     
-    @Override
-    public void setEditavel(boolean b) {}
+    private void setAdm(boolean adm) {
+        this.admistrador.setSelected(adm);
+    }
     
     @Override
-    public void limpar(){}
+    public void setEditavel(boolean b) {
+        admistrador.setEnabled(b);
+        admistrador.setBackground(this.getBackground());
+    }
+    
+    @Override
+    public void limpar(){
+        admistrador.setSelected(false);
+        admistrador.setBackground(this.getBackground());
+    }
 
     @Override
     public boolean objValido(Object obj) {
@@ -115,7 +137,6 @@ public class painelFuncionario extends JPanelCadastro {
         return f.validar();
         
     }
-
     private void setComentario(String comentarios) {
         this.categoriaCNH.setText(comentarios);
     }
