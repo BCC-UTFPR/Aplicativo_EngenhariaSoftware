@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Visao.Janelas.Componentes;
+package Visao.Janelas;
 
 import Persistencia.DAO;
 import Persistencia.DAOInterface;
+import Visao.Janelas.Componentes.JTextFieldBase;
 import Visao.Janelas.Componentes.Paineis.JPanelCadastro;
 import Visao.Janelas.Componentes.Paineis.JPanelGrid;
 import java.awt.Color;

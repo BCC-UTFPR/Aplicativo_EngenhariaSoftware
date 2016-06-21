@@ -27,6 +27,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
+        
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        
+        setBounds((screenSize.width-566)/2, (screenSize.height-216)/2, 655, this.getHeight());
     }
 
     /**

@@ -139,7 +139,12 @@ public class painelChegadaVeiculo extends JPanelCadastro {
     }
     
     @Override
-    public void setEditavel(boolean b) {}
+    public void setEditavel(boolean b) {
+    
+        motorista.setEnabled(!b);
+        veiculo.setEnabled(!b);
+        
+    }
 
     @Override
     public void limpar() {}

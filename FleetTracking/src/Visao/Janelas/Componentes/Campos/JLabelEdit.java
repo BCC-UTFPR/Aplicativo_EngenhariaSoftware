@@ -7,7 +7,7 @@ package Visao.Janelas.Componentes.Campos;
 
 import Persistencia.DAO;
 import Persistencia.DAOInterface;
-import Visao.Janelas.Componentes.FormConsultaPadrao;
+import Visao.Janelas.FormConsultaPadrao;
 import Visao.Janelas.Componentes.JTextFieldBase;
 import java.awt.Color;
 import java.awt.event.FocusEvent;

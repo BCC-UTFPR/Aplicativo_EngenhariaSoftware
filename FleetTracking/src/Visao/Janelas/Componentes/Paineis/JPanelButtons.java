@@ -8,13 +8,14 @@ package Visao.Janelas.Componentes.Paineis;
 import Persistencia.DAO;
 import Visao.Janelas.Componentes.Campos.JLabelEdit;
 import Visao.Janelas.Componentes.Campos.JLabelEditTextArea;
-import Visao.Janelas.Componentes.FormConsultaPadrao;
+import Visao.Janelas.FormConsultaPadrao;
 import Visao.Janelas.Componentes.JButtonBase;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 /**
@@ -30,12 +31,12 @@ public class JPanelButtons extends JPanelBase{
     private JButtonBase btOpen;
     private JButtonBase btClose;
     private JPanelCadastro panelClient;
-    private JFrame windowFrame;
+    private JDialog windowFrame;
     private DAO dao;
     private Object obj;
     private FormConsultaPadrao fcp;
 
-    public JPanelButtons(JPanelCadastro panelClient, JFrame windowFrame) {
+    public JPanelButtons(JPanelCadastro panelClient, JDialog windowFrame) {
         
         this.setBackground(Color.orange);
         

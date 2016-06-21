@@ -7,12 +7,12 @@ package Visao.Janelas;
 
 import Visao.Janelas.Componentes.Paineis.JPanelButtons;
 import Visao.Janelas.Componentes.Paineis.JPanelCadastro;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 /**
  *
  * @author jfilhogn
  */
-public class FormCadastroPadrao extends JFrame {
+public class FormCadastroPadrao extends JDialog {
 
     private JPanelButtons panelBotton;   
     
