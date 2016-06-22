@@ -57,21 +57,25 @@ public class JLabelEdit extends JComponent {
             tabela = table;
             campo = new JTextFieldBase(mascara);
             campo.setBounds(5, 20, 40, 20);
-            campo.addMouseListener(new java.awt.event.MouseAdapter() {
-                @Override
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    if (campo.isEnabled()) {
-                        jFormattedTextField1MouseClicked(evt);
-                    }
-                }
-            });
+//            bug
+//            campo.addMouseListener(new java.awt.event.MouseAdapter() { 
+//                @Override
+//                public void mouseClicked(java.awt.event.MouseEvent evt) {
+//                    if (campo.isEnabled()) {
+//                        jFormattedTextField1MouseClicked(evt);
+//                    }
+//                }
+//            });
             campo.addKeyListener(new KeyListener(){
                 @Override
-                    public void keyPressed(KeyEvent arg0) { }
-
+                    public void keyPressed(KeyEvent arg0) {
+                        procura();
+                    }
+                        
                 @Override
                    public void keyReleased(KeyEvent arg0) {
-                        actionSelected();
+//                        actionSelected();
+                        procura();
                    }
                 @Override
                    public void keyTyped(KeyEvent arg0) { }
@@ -86,31 +90,27 @@ public class JLabelEdit extends JComponent {
                 @Override
                 public void focusLost(FocusEvent e) {
                     setBackground(Color.WHITE);
-                    try {
-                       if (dao == null){
-                        dao = new DAO();
-                       }
-
-                       String hqlQuery = "from "+tabela+" where ID="+this.getPesquisa()+"";
-
-                       List lista = dao.select(hqlQuery);
-
-                       DAOInterface obj = (DAOInterface) lista.get(0);
-
-                       if (lista.get(0).equals(null)) {
-                            label.setText("Não Exite");
-                       } else label.setText(obj.getReferencia());
-
-
-                   } catch (Exception ex) {
-                        Logger.getLogger(FormConsultaPadrao.class.getName()).log(Level.SEVERE, null, ex);
-                   }
-               }
-
-               private String getPesquisa() {
-                    return campo.getText();
-               }
-
+                    
+//                    try {
+//                       if (dao == null){
+//                        dao = new DAO();
+//                       }
+//
+//                       String hqlQuery = "from "+tabela+" where ID="+this.getPesquisa()+"";
+//
+//                       List lista = dao.select(hqlQuery);
+//
+//                       DAOInterface obj = (DAOInterface) lista.get(0);
+//
+//                       if (lista.get(0).equals(null)) {
+//                            label.setText("Não Exite");
+//                       } else label.setText(obj.getReferencia());
+//
+//
+//                   } catch (Exception ex) {
+//                        Logger.getLogger(FormConsultaPadrao.class.getName()).log(Level.SEVERE, null, ex);
+//                   }
+                }
             });
             botton = new JButton("?");
             botton.setBounds(60, 20, 50, 20);
@@ -218,5 +218,31 @@ public class JLabelEdit extends JComponent {
         } catch (Exception ex) {
             Logger.getLogger(JLabelEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private String getPesquisa() {
+        return campo.getText();
+    }
+    
+    private void procura(){
+        try {
+           if (dao == null){
+            dao = new DAO();
+           }
+
+           String hqlQuery = "from "+tabela+" where ID="+this.getPesquisa()+"";
+
+           List lista = dao.select(hqlQuery);
+
+           DAOInterface obj = (DAOInterface) lista.get(0);
+
+           if (lista.get(0).equals(null)) {
+                label.setText("Não Exite");
+           } else label.setText(obj.getReferencia());
+
+
+       } catch (Exception ex) {
+            Logger.getLogger(FormConsultaPadrao.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
 }
